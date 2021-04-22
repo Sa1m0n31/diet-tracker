@@ -13,7 +13,7 @@ const TopMenu = () => {
         </h1>
 
         <div className="siteMenu__list d-none d-md-flex m-0">
-            <a className="siteMenu__list__item d-flex align-items-center mr-0 mr-lg-2 mr-xl-5 pr-3 pr-lg-5" href="/login">
+            <a className="siteMenu__list__item d-flex align-items-center mr-0 mr-lg-2 mr-xl-5 pr-3 pr-lg-5" href="/login/#register-form">
                 <img className="siteMenu__list__img" src={registerImg} alt="zarejestruj-sie" />
                 <span className="siteMenu__list__text">Zarejestruj się</span>
             </a>

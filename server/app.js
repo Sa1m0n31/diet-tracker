@@ -6,6 +6,8 @@ const { Pool, Client } = require("pg");
 
 const app = express();
 
+const registerRouter = require("./registerRouter");
+
 const port = 5000;
 const postgresPort = 5432;
 
@@ -13,6 +15,9 @@ const postgresPort = 5432;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+/* Routing */
+app.use("/", registerRouter);
 
 /* Polaczenie z baza danych PostgreSQL */
 const pool = new Pool({
@@ -23,10 +28,10 @@ const pool = new Pool({
    port: postgresPort
 });
 
-pool.query("SELECT * FROM rodzaje_produktow", (err, res) => {
-   console.log(err, res);
-   pool.end();
-});
+// pool.query("SELECT * FROM rodzaje_produktow", (err, res) => {
+//    console.log(err, res);
+//    pool.end();
+// });
 
 /* Frontend aplikacji */
 app.use(express.static(path.join(__dirname, '../client/build')));
