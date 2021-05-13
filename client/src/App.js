@@ -8,6 +8,8 @@ import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
 import AfterRegister from "./pages/AfterRegister";
 import Panel from "./pages/Panel";
+import MyAccount from "./pages/MyAccount";
+import AddProduct from "./pages/AddProduct";
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
           </Route>
           <Route path="/panel">
               <Panel />
+          </Route>
+          <Route path="/moje-konto">
+              <MyAccount />
+          </Route>
+          <Route path="/dodaj-produkt">
+              <AddProduct />
           </Route>
       </Switch>
     </Router>

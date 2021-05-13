@@ -61,6 +61,15 @@
         margin: 0;
         transform: none;
     }
+
+    /* Add product */
+    .numberLabels {
+        justify-content: center;
+    }
+
+    .label--number {
+        width: 49% !important;
+    }
 }
 
 @media(max-width: 768px) {
@@ -114,5 +123,22 @@
 
     .formHeader {
         font-size: 32px;
+    }
+
+    /* Add product */
+    .addProductMain__header {
+        font-size: 21px;
+    }
+
+    .addProductForm {
+        padding: 20px;
+    }
+
+    .label--number {
+        width: 100% !important;
+    }
+
+    .label--number .input {
+        width: 100%;
     }
 }

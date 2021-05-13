@@ -304,3 +304,111 @@ ul {
     justify-content: center;
     align-items: center;
 }
+
+/* Dashboard */
+.dashboardHeader {
+    text-align: center;
+    margin: 150px auto 10px;
+    font-weight: 700;
+}
+
+.charts {
+    margin: 200px auto 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90vw;
+    max-width: 1600px;
+}
+
+.chartContainer {
+    width: 45%;
+    height: 500px;
+    margin-bottom: 200px;
+}
+
+.chartHeader {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 400;
+}
+
+/* Add product */
+.addProductMain {
+    margin: 200px 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addProductMain__header {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 50px;
+}
+
+.addProductForm {
+    width: 80%;
+    max-width: 1000px;
+    background: #f6f6f6;
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.addProductForm .input {
+    background: transparent;
+}
+
+.label--addProduct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.label--addProduct .input {
+    text-align: center;
+}
+
+select {
+    margin-left: 30px !important;
+}
+
+.numberLabels {
+    margin-top: 100px;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.numberLabels__header {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.label--number {
+    width: 24%;
+    display: flex;
+    justify-content: center;
+}
+
+.numberLabels--macro {
+    justify-content: center;
+}
+
+.numberLabels--macro .label--number {
+    width: 30%;
+}
+
+.button--addProduct {
+    margin: 40px auto;
+    padding: 20px 40px;
+    height: 50px;
+    border-radius: 50px;
+}

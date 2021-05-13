@@ -1,12 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+const session = require("express-session");
+const PostgreSqlStore = require("connect-pg-simple")(session);
 const { Pool, Client } = require("pg");
 
 const app = express();
 
 const registerRouter = require("./registerRouter");
+const productRouter = require("./productRouter");
 
 const port = 5000;
 const postgresPort = 5432;
@@ -15,9 +19,18 @@ const postgresPort = 5432;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+
+/* Ustawienie sesji */
+// app.use(session({
+//    secret: "",
+//    resave: false,
+//    saveUninitialized: false
+// }));
 
 /* Routing */
 app.use("/", registerRouter);
+app.use("/product", productRouter);
 
 /* Polaczenie z baza danych PostgreSQL */
 const pool = new Pool({
@@ -28,10 +41,15 @@ const pool = new Pool({
    port: postgresPort
 });
 
-// pool.query("SELECT * FROM rodzaje_produktow", (err, res) => {
-//    console.log(err, res);
-//    pool.end();
-// });
+app.use(session({
+   store : new PostgreSqlStore({
+      conString: "postgres://szymon:lolpol@localhost:5432/diet-tracker"
+   }),
+   secret: "supersecretkey",
+   resave: false,
+   saveUninitialized: false,
+   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
 
 /* Frontend aplikacji */
 app.use(express.static(path.join(__dirname, '../client/build')));
