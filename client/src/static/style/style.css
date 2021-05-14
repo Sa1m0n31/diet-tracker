@@ -94,6 +94,10 @@ ul {
     transition: .2s all;
 }
 
+.siteMenu__list__item {
+    background: transparent;
+}
+
 .siteMenu__list__item:hover .siteMenu__list__text {
     transform: translateX(10px);
 }

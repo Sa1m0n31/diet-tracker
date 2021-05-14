@@ -4,7 +4,7 @@ import AddProductForm from "../components/AddProductForm";
 
 const AddProduct = () => {
     return <>
-        <TopMenu username="szymon" />
+        <TopMenu username={localStorage.getItem('diet-tracker-login')} />
         <AddProductForm />
     </>
 }

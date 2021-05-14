@@ -4,8 +4,23 @@ import loginImg from '../static/img/account.png'
 import registerImg from '../static/img/register.png'
 import hamburger from '../static/img/hamburger.png'
 import add from '../static/img/plus.png'
+import logoutImg from '../static/img/logout.png'
+import axios from 'axios';
 
 const TopMenu = ({username}) => {
+    const logout = () => {
+        axios.post("http://localhost:5000/logout", {
+            sessionId: localStorage.getItem('diet-tracker-sessionId')
+        })
+            .then(res => {
+                if(res.data.loggedOut === 1) {
+                    localStorage.removeItem('diet-tracker-sessionId');
+                    localStorage.removeItem('diet-tracker-login');
+                    window.location = "/";
+                }
+            });
+    }
+
     return <header className="siteMenu">
         <h1 className="siteMenu__header">
             <a href="/">
@@ -18,10 +33,14 @@ const TopMenu = ({username}) => {
                 <img className="siteMenu__list__img" src={loginImg} alt="zaloguj-sie" />
                 <span className="siteMenu__list__text">{username}</span>
             </a>
-                <a className="siteMenu__list__item d-flex align-items-center" href="/dodaj-produkt">
+                <a className="siteMenu__list__item d-flex align-items-center mr-0 mr-lg-2 mr-xl-5 pr-3 pr-lg-5" href="/dodaj-produkt">
                     <img className="siteMenu__list__img" src={add} alt="dodaj-produkt" />
                     <span className="siteMenu__list__text">Dodaj produkt</span>
                 </a>
+                <button className="siteMenu__list__item d-flex align-items-center" onClick={() => logout()}>
+                    <img className="siteMenu__list__img" src={logoutImg} alt="wyloguj-sie" />
+                    <span className="siteMenu__list__text">Wyloguj się</span>
+                </button>
             </> : <>
                 <a className="siteMenu__list__item d-flex align-items-center mr-0 mr-lg-2 mr-xl-5 pr-3 pr-lg-5" href="/login/#register-form">
                     <img className="siteMenu__list__img" src={registerImg} alt="zarejestruj-sie" />

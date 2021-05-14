@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TopMenu from "../components/TopMenu";
-
+import axios from 'axios'
 import useDemoConfig from '../helpers/useDemoConfig';
 import { Chart } from 'react-charts';
 
+import auth from "../helpers/auth";
+
 const Panel = () => {
+    let [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        auth()
+            .then(res => {
+                if(res.data.loggedIn === 1) setLoggedIn(true);
+                else window.location = "/";
+            });
+    }, []);
 
     const data_calories = React.useMemo(
         () => [
@@ -147,41 +158,43 @@ const Panel = () => {
 
 
     return <div className="container-fluid p-0">
-        <TopMenu username="szymon" />
+        <TopMenu username={loggedIn ? localStorage.getItem('diet-tracker-login') : ""} />
 
-        <h1 className="dashboardHeader">
-            Twoje wyniki z ostatniego tygodnia
-        </h1>
+        {loggedIn ? <>
+            <h1 className="dashboardHeader">
+                Twoje wyniki z ostatniego tygodnia
+            </h1>
 
-        <div className="charts">
-            <div className="chartContainer">
-                <h3 className="chartHeader">
-                    Kilokalorie
-                </h3>
-                <Chart data={data_calories} series={series} axes={axes} width={500} height={500} tooltip />
+            <div className="charts">
+                <div className="chartContainer">
+                    <h3 className="chartHeader">
+                        Kilokalorie
+                    </h3>
+                    <Chart data={data_calories} series={series} axes={axes} width={500} height={500} tooltip />
+                </div>
+
+                <div className="chartContainer">
+                    <h3 className="chartHeader">
+                        Białko
+                    </h3>
+                    <Chart data={data_protein} series={series} axes={axes} width={500} height={500} tooltip />
+                </div>
+
+                <div className="chartContainer">
+                    <h3 className="chartHeader">
+                        Węglowodany
+                    </h3>
+                    <Chart data={data_carbo} series={series} axes={axes} width={500} height={500} tooltip />
+                </div>
+
+                <div className="chartContainer">
+                    <h3 className="chartHeader">
+                        Tłuszcze
+                    </h3>
+                    <Chart data={data_fats} series={series} axes={axes} width={500} height={500} tooltip />
+                </div>
             </div>
-
-            <div className="chartContainer">
-                <h3 className="chartHeader">
-                    Białko
-                </h3>
-                <Chart data={data_protein} series={series} axes={axes} width={500} height={500} tooltip />
-            </div>
-
-            <div className="chartContainer">
-                <h3 className="chartHeader">
-                    Węglowodany
-                </h3>
-                <Chart data={data_carbo} series={series} axes={axes} width={500} height={500} tooltip />
-            </div>
-
-            <div className="chartContainer">
-                <h3 className="chartHeader">
-                    Tłuszcze
-                </h3>
-                <Chart data={data_fats} series={series} axes={axes} width={500} height={500} tooltip />
-            </div>
-        </div>
+        </> : ""}
     </div>
 }
 

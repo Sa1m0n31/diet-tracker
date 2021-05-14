@@ -30,6 +30,8 @@ const LoginForm = () => {
                     console.log(res.data);
                     if(res.data.success === 1) {
                         setLogged(true);
+                        localStorage.setItem('diet-tracker-sessionId', res.data.sessionId);
+                        localStorage.setItem('diet-tracker-login', res.data.login);
                         window.location = "/panel";
                     }
                     else {

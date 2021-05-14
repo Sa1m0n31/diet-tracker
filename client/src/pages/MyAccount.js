@@ -5,7 +5,7 @@ import MyAccountKeyValuePairs from "../components/MyAccountKeyValuePairs";
 
 const MyAccount = () => {
     return <div className="container-fluid p-0">
-        <TopMenu />
+        <TopMenu username={localStorage.getItem('diet-tracker-login')} />
         <MyAccountForm />
         <MyAccountKeyValuePairs />
     </div>
