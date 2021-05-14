@@ -56,7 +56,6 @@ router.post("/login", async (request, response) => {
         if(res.rowCount === 1) {
             /* Sprawdzamy czy uzytkownik podal poprawne haslo */
             if(res.rows[0].haslo === crypto.createHash('md5').update(form.password).digest('hex')) {
-                console.log(request.session);
                 response.send({
                     success: 1
                 });

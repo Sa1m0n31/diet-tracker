@@ -10,6 +10,7 @@ import AfterRegister from "./pages/AfterRegister";
 import Panel from "./pages/Panel";
 import MyAccount from "./pages/MyAccount";
 import AddProduct from "./pages/AddProduct";
+import AfterProductInsertPage from "./pages/AfterProductInsertPage";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/dodaj-produkt">
               <AddProduct />
+          </Route>
+          <Route path="/po-dodaniu-produktu">
+            <AfterProductInsertPage />
           </Route>
       </Switch>
     </Router>

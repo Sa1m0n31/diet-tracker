@@ -412,3 +412,112 @@ select {
     height: 50px;
     border-radius: 50px;
 }
+
+/* After product insert */
+.afterProductInsertMain {
+    margin-top: 50vh;
+}
+
+.afterProductInsertHeader {
+    text-align: center;
+}
+
+.button--afterProductInsert {
+    margin: 50px auto;
+    width: 300px;
+    border-radius: 45px;
+    padding: 20px 40px;
+}
+
+.button--afterProductInsert a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 45px;
+}
+
+/* My account */
+.mainAccount {
+    margin-top: 200px;
+}
+
+.mainAccountHeader {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.mainAccountForm {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    max-width: 1600px;
+    margin: auto;
+}
+
+.label--myAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.label--myAccount span {
+    font-size: 12px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+}
+
+.label--myAccount .input {
+    text-align: center;
+}
+
+.label--myAccount select {
+    margin-left: 0 !important;
+}
+
+.button--editMyAccount {
+    margin: 40px auto;
+    grid-column: 1 / span 2;
+    grid-row: 4;
+    padding: 20px 40px;
+    border-radius: 40px;
+}
+
+.myAccountKeyValuePairs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    max-width: 1600px;
+    margin: 50px auto;
+}
+
+.keyValuePair {
+    width: 45%;
+    background: #f6f6f6;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.keyValuePair__key {
+    font-size: 15px;
+    text-align: center;
+}
+
+.keyValuePair__value {
+    font-size: 24px;
+    text-align: center;
+}
