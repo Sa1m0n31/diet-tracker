@@ -11,7 +11,7 @@ const MyAccountKeyValuePairs = () => {
                 BMI
             </h3>
             <h4 className="keyValuePair__value">
-                25,5
+                {localStorage.getItem('diet-tracker-bmi')}
             </h4>
         </div>
         <div className="keyValuePair">
@@ -19,7 +19,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na kalorie
             </h3>
             <h4 className="keyValuePair__value">
-                2500
+                {localStorage.getItem('diet-tracker-cpm')}
             </h4>
         </div>
         <div className="keyValuePair">
@@ -27,15 +27,15 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na białko
             </h3>
             <h4 className="keyValuePair__value">
-                80
+                {localStorage.getItem('diet-tracker-protein')} g
             </h4>
         </div>
         <div className="keyValuePair">
             <h3 className="keyValuePair__key">
-                Dzienne zapotrzebowanie na węglowodany
+                Dzienne zapotrzebowanie na błonnik
             </h3>
             <h4 className="keyValuePair__value">
-                122
+                30 g
             </h4>
         </div>
         <div className="keyValuePair">
@@ -43,7 +43,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na tłuszcze
             </h3>
             <h4 className="keyValuePair__value">
-                25
+                {localStorage.getItem('diet-tracker-fats')}
             </h4>
         </div>
         <div className="keyValuePair">
@@ -51,7 +51,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na cukry
             </h3>
             <h4 className="keyValuePair__value">
-                2
+                {localStorage.getItem('diet-tracker-sugar')}
             </h4>
         </div>
     </section>

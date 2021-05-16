@@ -22,21 +22,66 @@ const MyAccountForm = () => {
                 login: currentUser
             }
         })
-            .then(res => {
+            .then(async res => {
                const userData = res.data.userData;
 
                setId(userData.id);
                if(userData.imie) setFirstName(userData.imie);
                if(userData.nazwisko) setLastName(userData.nazwisko);
-               if(userData.plec) setGender(userData.plec);
+               if(userData.plec) {
+                   setGender(userData.plec);
+                   localStorage.setItem('diet-tracker-gender', userData.plec.toString());
+               }
                if(userData.login) setLogin(userData.login);
-               if(userData.wzrost) setHeight(userData.wzrost);
-               if(userData.waga) setWeight(userData.waga);
+               if(userData.wzrost) {
+                   setHeight(userData.wzrost);
+                   localStorage.setItem('diet-tracker-height', userData.wzrost);
+               }
+               if(userData.waga) {
+                   setWeight(userData.waga);
+                   localStorage.setItem('diet-tracker-weight', userData.waga);
+               }
+
+               /* Oblicz BMI */
+               let w = parseInt(localStorage.getItem('diet-tracker-weight'));
+               let h = parseInt(localStorage.getItem('diet-tracker-height'));
+               let g = localStorage.getItem('diet-tracker-gender');
+
+               let bmi = w / Math.pow(parseFloat(parseFloat(h) / 100.00), 2);
+               localStorage.setItem('diet-tracker-bmi', bmi.toFixed(2).toString());
+
+               /* Oblicz dzienne zapotrzebowanie kaloryczne */
+               let cpm = 9.99 * w
+                   + 6.25 * h
+               if(localStorage.getItem('diet-tracker-gender') === 'k') {
+                   cpm -= 161;
+               }
+               else {
+                    cpm += 5;
+               }
+               cpm *= 1.3;
+               localStorage.setItem('diet-tracker-cpm', parseInt(cpm).toString());
+
+               /* Oblicz dzienne zapotrzebowanie na bialko */
+               let proteinNeed = w * 0.9;
+               localStorage.setItem('diet-tracker-protein', parseInt(proteinNeed).toString());
+
+               /* Oblicz dzienne zapotrzebowanie na weglowodany */
+               //let carboNeed =
+
+               /* Oblicz dzienne zapotrzebowanie na tluszcze */
+
+               /* Oblicz dzienne zapotrzebowanie na cukry */
+
             })
             .catch(err => {
 
             });
     }, []);
+
+    const calculateOptimalValues = () => {
+        console.log(height);
+    }
 
     const validationSchema = Yup.object({
 
