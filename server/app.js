@@ -38,7 +38,7 @@ const pool = new Pool({
 
 app.use(session({
    store : new PostgreSqlStore({
-      conString: "postgres://szymon:lolpol@localhost:5432/diet-tracker"
+      conString: "postgres://postgres:admin@localhost:5432/diet-tracker"
    }),
    secret: "supersecretkey",
    resave: false,

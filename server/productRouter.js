@@ -23,6 +23,19 @@ router.get("/get-product-kinds", (request, response) => {
     });
 });
 
+router.get("/get-all-products", (request, response) => {
+    /* Pobieramy wszystkie produkty z bazy */
+    pool.query("SELECT p.nazwa, w.kilokalorie, w.tluszcze, w.kwasy_tluszczowe_nasycone, w.weglowodany,\n" +
+        "w.cukry, w.bialka, w.sole, w.blonnik, m.wapn, m.chlor, m.magnez, m.fosfor, m.potas\n" +
+        "FROM produkty p \n" +
+        "JOIN wartosci_odzywcze w ON p.id = w.id_produktu\n" +
+        "JOIN makroelementy m ON p.id = m.id_produktu;", (err, res) => {
+        response.send({
+            products: res.rows
+        });
+    });
+});
+
 router.post("/add-product", async (request, response) => {
     const values = request.body;
     let kindId = 0, idOfInsertedRow;

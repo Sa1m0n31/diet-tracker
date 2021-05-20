@@ -81,7 +81,7 @@ ul {
 }
 
 .siteMenu__list__img {
-    height: 70%;
+    height: 50%;
     width: auto;
 }
 
@@ -524,4 +524,14 @@ select {
 .keyValuePair__value {
     font-size: 24px;
     text-align: center;
+}
+
+/* Add meal */
+.label--addMeal {
+    white-space: nowrap;
+}
+
+.label--addMeal .input {
+    margin-left: 30px;
+    width: 50px;
 }

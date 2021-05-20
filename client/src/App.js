@@ -11,6 +11,7 @@ import Panel from "./pages/Panel";
 import MyAccount from "./pages/MyAccount";
 import AddProduct from "./pages/AddProduct";
 import AfterProductInsertPage from "./pages/AfterProductInsertPage";
+import AddMeal from "./pages/AddMeal";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/po-dodaniu-produktu">
             <AfterProductInsertPage />
+          </Route>
+          <Route path="/dodaj-spozycie">
+              <AddMeal />
           </Route>
       </Switch>
     </Router>
