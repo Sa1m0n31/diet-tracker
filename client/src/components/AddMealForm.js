@@ -7,12 +7,13 @@ import * as Yup from 'yup';
 const AddMealForm = () => {
     let arrayOfProducts = [];
     let [stateArray, setStateArray] = useState([]);
-    let [chosenProductIndex, setChosenProductIndex] = useState(-1);
+    let [inserted, setInserted] = useState(false);
+    let [chosenProductIndex, setChosenProductIndex] = useState(0);
     let [productAmount, setProductAmount] = useState(100);
 
     const labels = ['Kilokalorie', 'Węglowodany', 'Białko', 'Tłuszcze', 'Kwasy tłuszczowe nasycone', 'Błonnik', 'Cukry', 'Sole',
-            'Wapń', 'Chlor', 'Potas', 'Chlor', 'Magnez'
-    ];
+            'Wapń', 'Chlor', 'Potas', 'Fosfor', 'Magnez'
+    ]
 
     useEffect(() => {
         axios.get("http://localhost:5000/product/get-all-products")
@@ -20,37 +21,45 @@ const AddMealForm = () => {
                 if(res.data) {
                     await res.data.products.forEach(item => {
                         arrayOfProducts.push({
-                            name: item.nazwa,
-                            calories: item.kilokalorie,
-                            protein: item.bialko,
-                            fat: item.tluszcze,
-                            saturatedFat: item.kwasy_tlusczowe_nasycone,
-                            sugar: item.cukry,
-                            carbo: item.weglowodany,
-                            salt: item.sole,
-                            fiber: item.blonnik,
-                            chlorine: item.chlor,
-                            phosphorus: item.fosfor,
-                            magnesium: item.magnez,
-                            calcium: item.wapn,
-                            potassium: item.potas
+                            i0: item.nazwa,
+                            i1: item.kilokalorie,
+                            i2: item.weglowodany,
+                            i3: item.bialka,
+                            i4: item.tluszcze,
+                            i5: item.kwasy_tluszczowe_nasycone,
+                            i6: item.blonnik,
+                            i7: item.cukry,
+                            i8: item.sole,
+                            i9: item.wapn,
+                            i10: item.chlor,
+                            i11: item.potas,
+                            i12: item.fosfor,
+                            i13: item.magnez
                         });
                     });
                     let options = "";
                     await arrayOfProducts.forEach((item, index) => {
-                        options += `<option value='${index}'>${item.name}</option>`;
+                        options += `<option value='${index}'>${item.i0}</option>`;
                     });
                     setStateArray(arrayOfProducts);
+
                     document.querySelector("select").innerHTML = options;
                 }
             })
     }, []);
 
-    useEffect(() => {
-        /* Zmieniony zostal produkt lub jego ilosc - zmieniamy ilosci wartosci odzywczych i makroelementow na podgladzie */
-        //console.log(stateArray[chosenProductIndex]);
-        console.log(stateArray[0]);
-    }, [chosenProductIndex, productAmount]);
+    const addMeal = () => {
+        if(productAmount > 0 && productAmount < 1001) {
+            axios.post("http://localhost:5000/product/add-meal", {
+                userId: localStorage.getItem('diet-tracker-userId'),
+                productAmount,
+                productName: stateArray[chosenProductIndex].i0
+            })
+                .then(res => {
+                    setInserted(res.data.inserted);
+                });
+        }
+    }
 
     return <main className="addProductMain">
         <h1 className="addProductMain__header">
@@ -70,6 +79,8 @@ const AddMealForm = () => {
                    name="weight"
                    type="number"
                    placeholder="0"
+                   min={1}
+                   max={1000}
                    value={productAmount}
                    onChange={(e) => setProductAmount(e.target.value)}
             />
@@ -77,17 +88,21 @@ const AddMealForm = () => {
 
 
         <div className="myAccountKeyValuePairs">
-            {labels.map(item => (
-                <div className="keyValuePair">
+            {labels.map((item, index) => (
+                <div className="keyValuePair" key={index}>
                     <h3 className="keyValuePair__key">
                         {item}
                     </h3>
                     <h4 className="keyValuePair__value">
-                        {stateArray[chosenProductIndex] ? stateArray[chosenProductIndex].calories : ""}
+                        {stateArray[chosenProductIndex] ? !isNaN(stateArray[chosenProductIndex]["i" + index]) ? (stateArray[chosenProductIndex]["i" + index] * productAmount / 100).toFixed(2) : stateArray[chosenProductIndex]["i" + index] : ""}
                     </h4>
                 </div>
             ))}
         </div>
+
+        {inserted ? <h3 className="mealInserted">Posiłek został dodany</h3> : <button className="button button--addProduct" onClick={() => addMeal()}>
+            Dodaj posiłek
+        </button> }
 
 
         </main>

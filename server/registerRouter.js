@@ -52,13 +52,13 @@ router.post("/login", async (request, response) => {
     const form = request.body;
 
     /* Szukamy uzytkownika o danym loginie w bazie */
-    await pool.query(`SELECT haslo FROM uzytkownicy WHERE login = '${form.login}'`, (err, res) => {
+    await pool.query(`SELECT id, haslo FROM uzytkownicy WHERE login = '${form.login}'`, (err, res) => {
         if(res.rowCount === 1) {
             /* Sprawdzamy czy uzytkownik podal poprawne haslo */
             if(res.rows[0].haslo === crypto.createHash('md5').update(form.password).digest('hex')) {
                 /* Logowanie przebiegło pomyślnie - tworzymy klucz sesji */
                 const sessionId = crypto.randomBytes(16).toString("hex");
-                console.log(sessionId);
+                const userId = res.rows[0].id;
 
                 /* Zapisujemy klucz w tabeli SESJE */
                 pool.query(`INSERT INTO sesje VALUES (nextval('sesje_autoincrement'),
@@ -68,6 +68,7 @@ router.post("/login", async (request, response) => {
                     /* Zwracamy informacje o zalogowaniu i klucz sesji przegladarce */
                     response.send({
                         success: 1,
+                        userId,
                         sessionId: sessionId,
                         login: form.login
                     });

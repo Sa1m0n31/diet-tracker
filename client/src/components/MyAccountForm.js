@@ -15,11 +15,9 @@ const MyAccountForm = () => {
 
     useEffect(() => {
         /* Pobieramy dane o uzytkowniku */
-        let currentUser = 'pati'; /* TODO */
-
         axios.get("http://localhost:5000/user/get-user-data", {
             params: {
-                login: currentUser
+                login: localStorage.getItem('diet-tracker-login')
             }
         })
             .then(async res => {
@@ -67,7 +65,8 @@ const MyAccountForm = () => {
                localStorage.setItem('diet-tracker-protein', parseInt(proteinNeed).toString());
 
                /* Oblicz dzienne zapotrzebowanie na weglowodany */
-               //let carboNeed =
+               let carboNeed = 350 + w;
+               localStorage.setItem('diet-tracker-carbo', carboNeed.toString());
 
                /* Oblicz dzienne zapotrzebowanie na tluszcze */
 

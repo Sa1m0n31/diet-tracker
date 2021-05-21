@@ -40,10 +40,10 @@ const MyAccountKeyValuePairs = () => {
         </div>
         <div className="keyValuePair">
             <h3 className="keyValuePair__key">
-                Dzienne zapotrzebowanie na tłuszcze
+                Dzienne zapotrzebowanie na węglowodany
             </h3>
             <h4 className="keyValuePair__value">
-                {localStorage.getItem('diet-tracker-fats')}
+                {localStorage.getItem('diet-tracker-carbo')}
             </h4>
         </div>
         <div className="keyValuePair">

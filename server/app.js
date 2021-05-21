@@ -12,6 +12,7 @@ const app = express();
 const registerRouter = require("./registerRouter");
 const productRouter = require("./productRouter");
 const userRouter = require("./userRouter");
+const dataRouter = require("./dataRouter");
 
 const port = 5000;
 const postgresPort = 5432;
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use("/", registerRouter);
 app.use("/product", productRouter);
 app.use("/user", userRouter);
+app.use("/data", dataRouter);
 
 /* Polaczenie z baza danych PostgreSQL */
 const pool = new Pool({

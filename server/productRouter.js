@@ -100,9 +100,36 @@ router.post("/add-product", async (request, response) => {
            });
        }
     });
+});
 
+router.post("/add-meal", async (request, response) => {
+    const userId = request.body.userId;
+    const amount = request.body.productAmount;
+    const productName = request.body.productName;
+    let productId = 0;
 
-
+    /* Znajdujemy id produktu wedlug jego nazwy */
+    await pool.query(`SELECT id FROM produkty WHERE nazwa = '${productName}'`, (err, res) => {
+        if(res) productId = res.rows[0].id;
+        pool.query(`INSERT INTO spozycie VALUES (
+                                            nextval('spozycie_autoincrement'),
+                                            ${userId},
+                                            ${productId},
+                                            CURRENT_DATE,
+                                            ${amount}
+    )`, (err, res) => {
+            if(res) {
+                response.send({
+                    inserted: true
+                });
+            }
+            else {
+                response.send({
+                    inserted: false
+                });
+            }
+        });
+    });
 });
 
 module.exports = router;
