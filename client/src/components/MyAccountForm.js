@@ -68,9 +68,12 @@ const MyAccountForm = () => {
                let carboNeed = 350 + w;
                localStorage.setItem('diet-tracker-carbo', carboNeed.toString());
 
-               /* Oblicz dzienne zapotrzebowanie na tluszcze */
+               /* Oblicz dzienne zapotrzebowanie na magnez */
+               let magnessiumNeed;
+               if(localStorage.getItem('diet-tracker-gender') === 'k') magnessiumNeed = 0.31;
+               else magnessiumNeed = 0.41;
+               localStorage.setItem('diet-tracker-magnessium', magnessiumNeed);
 
-               /* Oblicz dzienne zapotrzebowanie na cukry */
 
             })
             .catch(err => {

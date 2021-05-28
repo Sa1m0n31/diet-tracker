@@ -312,12 +312,13 @@ ul {
 /* Dashboard */
 .dashboardHeader {
     text-align: center;
-    margin: 150px auto 10px;
+    margin: 150px auto 0;
     font-weight: 700;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .charts {
-    margin: 200px auto 100px;
+    margin: 140px auto 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -329,7 +330,7 @@ ul {
 .chartContainer {
     width: 45%;
     height: 500px;
-    margin-bottom: 200px;
+    margin-bottom: 20px;
 }
 
 .chartHeader {

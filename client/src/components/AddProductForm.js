@@ -37,8 +37,6 @@ const AddProductForm = () => {
             .required("Podaj ilość białka"),
         fat: Yup.number()
             .required("Podaj ilość tłuszczu"),
-        saturatedFat: Yup.number()
-            .required("Podaj ilość kwasów tłuszczowych nasyconych"),
         carbo: Yup.number()
             .required("Podaj ilość węglowodanów"),
         fiber: Yup.number()
@@ -66,7 +64,6 @@ const AddProductForm = () => {
             calories: "",
             protein: "",
             fat: "",
-            saturatedFat: "",
             fiber: "",
             salt: "",
             carbo: "",
@@ -79,7 +76,6 @@ const AddProductForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: values => {
-            console.log(values);
             axios.post("http://localhost:5000/product/add-product", values)
                 .then(res => {
                    if(res.data.insert === 1) {
@@ -149,15 +145,6 @@ const AddProductForm = () => {
                            name="fat"
                            onChange={formik.handleChange}
                            value={formik.values.fat}
-                    />
-                </label>
-                 <label className="label label--number">
-                    <input className="input"
-                           type="number"
-                           placeholder="Kwasy tł. nasycone"
-                           name="saturatedFat"
-                           onChange={formik.handleChange}
-                           value={formik.values.saturatedFat}
                     />
                 </label>
                 <label className="label label--number">

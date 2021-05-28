@@ -25,7 +25,7 @@ router.get("/get-product-kinds", (request, response) => {
 
 router.get("/get-all-products", (request, response) => {
     /* Pobieramy wszystkie produkty z bazy */
-    pool.query("SELECT p.nazwa, w.kilokalorie, w.tluszcze, w.kwasy_tluszczowe_nasycone, w.weglowodany,\n" +
+    pool.query("SELECT p.nazwa, w.kilokalorie, w.tluszcze, w.weglowodany,\n" +
         "w.cukry, w.bialka, w.sole, w.blonnik, m.wapn, m.chlor, m.magnez, m.fosfor, m.potas\n" +
         "FROM produkty p \n" +
         "JOIN wartosci_odzywcze w ON p.id = w.id_produktu\n" +
@@ -59,7 +59,6 @@ router.post("/add-product", async (request, response) => {
                                                                                 '${idOfInsertedRow}',
                                                                                 '${values.calories}',
                                                                                 '${values.fat}',
-                                                                                '${values.saturatedFat}',
                                                                                 '${values.carbo}',
                                                                                 '${values.sugar}',
                                                                                 '${values.protein}',

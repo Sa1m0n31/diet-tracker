@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 
 import axios from 'axios'
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 
 const AddMealForm = () => {
     let arrayOfProducts = [];
@@ -11,7 +9,7 @@ const AddMealForm = () => {
     let [chosenProductIndex, setChosenProductIndex] = useState(0);
     let [productAmount, setProductAmount] = useState(100);
 
-    const labels = ['Kilokalorie', 'Węglowodany', 'Białko', 'Tłuszcze', 'Kwasy tłuszczowe nasycone', 'Błonnik', 'Cukry', 'Sole',
+    const labels = ['Nazwa', 'Kilokalorie', 'Węglowodany', 'Białko', 'Tłuszcze', 'Błonnik', 'Cukry', 'Sole',
             'Wapń', 'Chlor', 'Potas', 'Fosfor', 'Magnez'
     ]
 
@@ -26,15 +24,14 @@ const AddMealForm = () => {
                             i2: item.weglowodany,
                             i3: item.bialka,
                             i4: item.tluszcze,
-                            i5: item.kwasy_tluszczowe_nasycone,
-                            i6: item.blonnik,
-                            i7: item.cukry,
-                            i8: item.sole,
-                            i9: item.wapn,
-                            i10: item.chlor,
-                            i11: item.potas,
-                            i12: item.fosfor,
-                            i13: item.magnez
+                            i5: item.blonnik,
+                            i6: item.cukry,
+                            i7: item.sole,
+                            i8: item.wapn,
+                            i9: item.chlor,
+                            i10: item.potas,
+                            i11: item.fosfor,
+                            i12: item.magnez
                         });
                     });
                     let options = "";

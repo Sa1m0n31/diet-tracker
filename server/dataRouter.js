@@ -17,7 +17,7 @@ const pool = new Pool({
 router.post("/get-weekly-stats", (request, response) => {
     const userId = request.body.userId;
 
-    pool.query(`SELECT s.data, SUM(w.kilokalorie) kilokalorie, SUM(w.tluszcze) tluszcze, SUM(w.kwasy_tluszczowe_nasycone) kwasy_tluszczowe_nasycone, 
+    pool.query(`SELECT s.data, SUM(w.kilokalorie) kilokalorie, SUM(w.tluszcze) tluszcze, 
 SUM(w.cukry) cukry, SUM(w.weglowodany) weglowodany, SUM(w.bialka) bialka, SUM(w.sole) sole, SUM(w.blonnik) blonnik, 
 SUM(m.chlor) chlor, SUM(m.wapn) wapn, SUM(m.magnez) magnez, SUM(m.fosfor) fosfor, SUM(m.potas) potas, SUM(s.ilosc) ilosc
 FROM wartosci_odzywcze w 
