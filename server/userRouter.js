@@ -28,19 +28,17 @@ router.get("/get-user-data", (request, response) => {
 router.post("/edit-user", (request, response) => {
     const values = request.body;
     let gender = 'k';
-    console.log(values.gender);
     if(values.gender === "Kobieta") gender = 'k';
     else if(values.gender === "Mężczyzna") gender = 'm';
 
     pool.query(`UPDATE uzytkownicy SET imie = '${values.firstName}',
                                                       nazwisko = '${values.lastName}',
-                                                      plec = '${gender}',                                                      login = '${values.login}',
+                                                      plec = '${gender}',
+                                                      login = '${values.login}',
                                                       wzrost = '${values.height}',
                                                       waga = '${values.weight}'
                                WHERE id = ${values.id}                        
     `, (err, res) => {
-       console.log(err);
-       console.log(res);
     });
 });
 

@@ -1,0 +1,13 @@
+---------- 1. Obsługa rejestracji, logowania i sesji ----------
+Użytkownik rejestruje się w aplikacji poprzez formularz pod adresem /login#register-form, gdzie podaje login, adres email oraz dwukrotnie hasło, które musi być
+identyczne i składać się z co najmniej sześciu znaków. Dane o użytkowniku zapisywane są do tabeli UŻYTKOWNICY (hasło w postaci haszowanej, po użyciu algorytmu MD5
+z modułu npm crypto). Kolumny: imie, nazwisko, wiek, wzrost, waga i plec wypelniane są wartością NULL, istnieje później możliwość edycji tych danych na podstronie
+Moje konto.
+
+Po zalogowaniu do tabeli SESJE zapisywany jest wiersz z unikalnym kluczem sesji (generowanym z pomocą modułu npm UUID - Universally unique identifier) oraz datą
+wygaśnięcia sesji, ustalaną na 30 minut od czasu zalogowania. Za każdą akcją użytkownika, polegającą na przejściu do innej podstrony, data wygaśnięcia sesji
+jest modyfikowana (dodawane jest 30 minut od czasu wykonywania akcji). W celu utrzymania porzadku w bazie, przy każdym logowaniu wywoływane jest zapytanie delete,
+usuwające z tabeli SESJE wiersze, w ktorych data_wygasniecia_sesji jest mniejsza od aktualnej daty i godziny. Polecenie delete, usuwające z tabeli aktualną sesję,
+jest również wywoływane przy wylogowaniu się użytkownika.
+
+

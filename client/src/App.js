@@ -4,14 +4,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import MainPage from "./pages/MainPage";
-import LoginPage from "./pages/LoginPage";
-import AfterRegister from "./pages/AfterRegister";
-import Panel from "./pages/Panel";
-import MyAccount from "./pages/MyAccount";
-import AddProduct from "./pages/AddProduct";
-import AfterProductInsertPage from "./pages/AfterProductInsertPage";
-import AddMeal from "./pages/AddMeal";
+import MainPage from "./pages/main/MainPage";
+import LoginPage from "./pages/main/LoginPage";
+import AfterRegister from "./pages/main/AfterRegister";
+import Panel from "./pages/restricted/Panel";
+import MyAccount from "./pages/restricted/MyAccount";
+import AddProduct from "./pages/restricted/AddProduct";
+import AfterProductInsertPage from "./pages/restricted/AfterProductInsertPage";
+import AddMeal from "./pages/restricted/AddMeal";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminPanel from "./pages/admin/AdminPanel";
+import React from "react";
 
 function App() {
   return (
@@ -40,6 +43,12 @@ function App() {
           </Route>
           <Route path="/dodaj-spozycie">
               <AddMeal />
+          </Route>
+          <Route path="/admin">
+              <AdminLogin />
+          </Route>
+          <Route path="/admin-panel">
+              <AdminPanel />
           </Route>
       </Switch>
     </Router>

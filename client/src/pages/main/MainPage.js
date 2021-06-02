@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import TopMenu from "../components/TopMenu";
-import Landing from "../components/Landing";
-import auth from "../helpers/auth";
+import TopMenu from "../../components/TopMenu";
+import Landing from "../../components/Landing";
+import auth from "../../helpers/auth";
 
 const MainPage = () => {
     let [loggedIn, setLoggedIn] = useState(0);

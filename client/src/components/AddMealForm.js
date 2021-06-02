@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 import axios from 'axios'
+import {setIn} from "formik";
 
 const AddMealForm = () => {
     let arrayOfProducts = [];
@@ -8,6 +9,7 @@ const AddMealForm = () => {
     let [inserted, setInserted] = useState(false);
     let [chosenProductIndex, setChosenProductIndex] = useState(0);
     let [productAmount, setProductAmount] = useState(100);
+    let [insertedMsg, setInsertedMsg] = useState("");
 
     const labels = ['Nazwa', 'Kilokalorie', 'Węglowodany', 'Białko', 'Tłuszcze', 'Błonnik', 'Cukry', 'Sole',
             'Wapń', 'Chlor', 'Potas', 'Fosfor', 'Magnez'
@@ -53,7 +55,10 @@ const AddMealForm = () => {
                 productName: stateArray[chosenProductIndex].i0
             })
                 .then(res => {
-                    setInserted(res.data.inserted);
+                    setInserted(true);
+                    if(res.inserted === 1) setInsertedMsg("Dodano spozycie produktu");
+                    else if(res.inserted === 0) setInsertedMsg("Wystapil blad. Prosimy sprobowac poxniej");
+                    else setInsertedMsg("Z tego konta dodano juz dzis 10 posilkow. Nie mozna ich dodac wiecej jednego dnia. Zapraszamy jutro.");
                 });
         }
     }
@@ -97,7 +102,7 @@ const AddMealForm = () => {
             ))}
         </div>
 
-        {inserted ? <h3 className="mealInserted">Posiłek został dodany</h3> : <button className="button button--addProduct" onClick={() => addMeal()}>
+        {inserted ? <h3 className="mealInserted">{insertedMsg}</h3> : <button className="button button--addProduct" onClick={() => addMeal()}>
             Dodaj posiłek
         </button> }
 

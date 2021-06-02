@@ -1,0 +1,25 @@
+---------- PROCEDURY ----------
+1. check_number_of_meals_added_by_user()
+Sprawdza liczbe dodanych posiłków przez danego użytkownika w ciągu aktualnego dnia. Jeśli jest większa niż 10 - nie pozwala
+na dodanie kolejnego wiersza.
+
+CREATE OR REPLACE FUNCTION check_number_of_meals_added_by_user()
+RETURNS TRIGGER AS $$
+DECLARE
+	meals_added int;
+	test text;
+BEGIN
+	SELECT COUNT(*) INTO meals_added FROM spozycie WHERE id_uzytkownika = NEW.id_uzytkownika AND data = NOW()::date;
+	RAISE NOTICE 'number: %', meals_added;
+	RAISE NOTICE 'test';
+	IF meals_added >= 10 THEN
+		RETURN NULL;
+	ELSE
+		RETURN NEW;
+	END IF;
+END
+$$ LANGUAGE plpgsql;
+
+---------- TRIGGERY ----------
+1. check_number_of_meals_added_today
+Wykonuje procedurę check_number_of_meals_added_by_user przy każdym dodaniu wiersza do tabeli SPOZYCIE.

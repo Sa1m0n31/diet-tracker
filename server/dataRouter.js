@@ -17,17 +17,18 @@ const pool = new Pool({
 router.post("/get-weekly-stats", (request, response) => {
     const userId = request.body.userId;
 
-    pool.query(`SELECT s.data, SUM(w.kilokalorie) kilokalorie, SUM(w.tluszcze) tluszcze, 
-SUM(w.cukry) cukry, SUM(w.weglowodany) weglowodany, SUM(w.bialka) bialka, SUM(w.sole) sole, SUM(w.blonnik) blonnik, 
-SUM(m.chlor) chlor, SUM(m.wapn) wapn, SUM(m.magnez) magnez, SUM(m.fosfor) fosfor, SUM(m.potas) potas, SUM(s.ilosc) ilosc
+    pool.query(`SELECT s.data::date + 1 as data, SUM(w.kilokalorie * ilosc / 100) kilokalorie, SUM(w.tluszcze * ilosc / 100) tluszcze, 
+SUM(w.cukry * ilosc / 100) cukry, SUM(w.weglowodany * ilosc / 100) weglowodany, SUM(w.bialka * ilosc / 100) bialka, SUM(w.sole * ilosc / 100) sole, SUM(w.blonnik * ilosc / 100) blonnik, 
+SUM(m.chlor * ilosc / 100) chlor, SUM(m.wapn * ilosc / 100) wapn, SUM(m.magnez * ilosc / 100) magnez, SUM(m.fosfor * ilosc / 100) fosfor, SUM(m.potas * ilosc / 100) potas, SUM(s.ilosc) ilosc
 FROM wartosci_odzywcze w 
 JOIN makroelementy m 
 USING(id_produktu)
 JOIN spozycie s
 ON m.id_produktu = s.id_produktu
-WHERE s.id_uzytkownika = ${userId}
-GROUP BY s.data ORDER BY s.data DESC;`, (err, res) => {
+WHERE s.id_uzytkownika = ${userId} AND s.data > NOW()::date - 7
+GROUP BY s.data;`, (err, res) => {
         if(res) {
+            console.log(res.rows);
             response.send({
                 rows: res.rows
             });

@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import getUserData from "../helpers/getUserData";
 
 const MyAccountKeyValuePairs = () => {
+    const [bmi, setBmi] = useState(0);
+    const [cpm, setCpm] = useState(0);
+    const [carbo, setCarbo] = useState(0);
+    const [protein, setProtein] = useState(0);
+    const [magnessium, setMagnessium] = useState(0);
+
+    useEffect(() => {
+        const userData = getUserData();
+        userData.then(res => {
+            setBmi(res.bmi);
+            setCpm(res.cpm);
+            setCarbo(res.carboNeed);
+            setProtein(res.proteinNeed);
+            setMagnessium(res.magnessiumNeed);
+        })
+    });
+
     return <section className="myAccountKeyValuePairs">
         <h2 className="mainAccountHeader">
             O Twojej diecie
@@ -11,7 +29,7 @@ const MyAccountKeyValuePairs = () => {
                 BMI
             </h3>
             <h4 className="keyValuePair__value">
-                {localStorage.getItem('diet-tracker-bmi')}
+                {!isNaN(bmi) ? bmi : "?"}
             </h4>
         </div>
         <div className="keyValuePair">
@@ -19,7 +37,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na kalorie
             </h3>
             <h4 className="keyValuePair__value">
-                {localStorage.getItem('diet-tracker-cpm')}
+                {!isNaN(cpm) ? cpm : "?"}
             </h4>
         </div>
         <div className="keyValuePair">
@@ -27,7 +45,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na białko
             </h3>
             <h4 className="keyValuePair__value">
-                {localStorage.getItem('diet-tracker-protein')} g
+                {!isNaN(protein) ? protein : "?"} g
             </h4>
         </div>
         <div className="keyValuePair">
@@ -43,7 +61,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na węglowodany
             </h3>
             <h4 className="keyValuePair__value">
-                {localStorage.getItem('diet-tracker-carbo')} g
+                {!isNaN(carbo) ? carbo : "?"} g
             </h4>
         </div>
         <div className="keyValuePair">
@@ -67,7 +85,7 @@ const MyAccountKeyValuePairs = () => {
                 Dzienne zapotrzebowanie na magnez
             </h3>
             <h4 className="keyValuePair__value">
-                {parseFloat(localStorage.getItem('diet-tracker-magnessium')) * 1000} mg
+                {!isNaN(magnessium) ? magnessium * 1000 : "?"} mg
             </h4>
         </div>
         <div className="keyValuePair">

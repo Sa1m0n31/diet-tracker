@@ -51,6 +51,9 @@ router.post("/register",(request, response) => {
 router.post("/login", async (request, response) => {
     const form = request.body;
 
+    /* Usuwamy pozostale niepotrzebne sesje */
+    pool.query(`DELETE FROM sesje WHERE data_wygasniecia_sesji < current_timestamp`);
+
     /* Szukamy uzytkownika o danym loginie w bazie */
     await pool.query(`SELECT id, haslo FROM uzytkownicy WHERE login = '${form.login}'`, (err, res) => {
         if(res.rowCount === 1) {
@@ -88,17 +91,53 @@ router.post("/login", async (request, response) => {
     }
 });
 
-/* Zadanie wywolywane przy kazdym zadaniu do chronionego zasobu */
+/* Logowanie administratora */
+router.post("/admin-login", async (request, response) => {
+    const form = request.body;
+
+    /* Szukamy uzytkownika o danym loginie w bazie */
+    await pool.query(`SELECT id, haslo FROM admini WHERE login = '${form.login}'`, (err, res) => {
+        if(res.rowCount === 1) {
+            /* Sprawdzamy czy uzytkownik podal poprawne haslo */
+            if(res.rows[0].haslo === crypto.createHash('md5').update(form.password).digest('hex')) {
+                /* Logowanie przebiegło pomyślnie - tworzymy klucz sesji */
+                const sessionId = crypto.randomBytes(16).toString("hex");
+                const userId = res.rows[0].id;
+
+                /* Zapisujemy klucz w tabeli SESJE_ADMINOW */
+                pool.query(`INSERT INTO sesje_adminow VALUES (nextval('sesje_adminow_autoincrement'),
+                                                                    '${sessionId}',
+                                                                    current_timestamp + (20 * interval '1 minute')
+                )`, (err, res) => {
+                    /* Zwracamy informacje o zalogowaniu i klucz sesji przegladarce */
+                    response.send({
+                        success: 1,
+                        userId,
+                        sessionId: sessionId,
+                        login: form.login
+                    });
+                });
+            }
+            else loginFail();
+        }
+        else loginFail();
+    });
+
+    const loginFail = () => {
+        response.send({
+            success: 0
+        });
+    }
+});
+
+/* Zadanie wywolywane przy kazdym zadaniu do chronionego zasobu uzytkownika */
 router.post("/auth", (request, response) => {
     const sessionId = request.body.sessionId;
 
-    pool.query(`SELECT * FROM sesje WHERE klucz_sesji = '${sessionId}'`, (err, res) => {
+    pool.query(`SELECT * FROM sesje WHERE klucz_sesji = '${sessionId}' AND data_wygasniecia_sesji > current_timestamp`, (err, res) => {
        if(res.rowCount === 1) {
            /* Przedluzamy czas sesji */
-           pool.query("UPDATE sesje SET data_wygasniecia_sesji = current_timestamp + (20 * interval '1 minute')", (err, res) => {
-              console.log(res);
-              console.log(err);
-           });
+           pool.query(`UPDATE sesje SET data_wygasniecia_sesji = current_timestamp + (20 * interval '1 minute') WHERE klucz_sesji = '${sessionId}'`);
 
            /* Zwracamy odpowiedz do przegladarki */
            response.send({
@@ -114,7 +153,30 @@ router.post("/auth", (request, response) => {
     });
 });
 
-/* Wylogowanie */
+/* Zadanie wywolywane przy kazdym zadaniu do chronionego zasobu administratora */
+router.post("/admin-auth", (request, response) => {
+    const sessionId = request.body.sessionId;
+
+    pool.query(`SELECT * FROM sesje_adminow WHERE klucz_sesji = '${sessionId}' AND data_wygasniecia_sesji > current_timestamp`, (err, res) => {
+        if(res.rowCount === 1) {
+            /* Przedluzamy czas sesji */
+            pool.query(`UPDATE sesje_adminow SET data_wygasniecia_sesji = current_timestamp + (20 * interval '1 minute') WHERE klucz_sesji = '${sessionId}'`);
+
+            /* Zwracamy odpowiedz do przegladarki */
+            response.send({
+                loggedIn: 1
+            });
+        }
+        else {
+            /* Uzytkownik nie zalogowany */
+            response.send({
+                loggedIn: 0
+            });
+        }
+    });
+});
+
+/* Wylogowanie uzytkownika */
 router.post("/logout", (request, response) => {
    const sessionId = request.body.sessionId;
 
@@ -123,6 +185,17 @@ router.post("/logout", (request, response) => {
           loggedOut: 1
       }) ;
    });
+});
+
+/* Wylogowanie administratora */
+router.post("/admin-logout", (request, response) => {
+    const sessionId = request.body.sessionId;
+
+    pool.query(`DELETE FROM sesje_adminow WHERE klucz_sesji = '${sessionId}'`, (err, res) => {
+        response.send({
+            loggedOut: 1
+        }) ;
+    });
 });
 
 module.exports = router;

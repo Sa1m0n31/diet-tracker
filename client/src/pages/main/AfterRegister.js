@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import TopMenu from "../components/TopMenu";
+import TopMenu from "../../components/TopMenu";
 
 const AfterRegister = () => {
     useEffect(() => {

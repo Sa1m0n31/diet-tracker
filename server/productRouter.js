@@ -118,13 +118,20 @@ router.post("/add-meal", async (request, response) => {
                                             ${amount}
     )`, (err, res) => {
             if(res) {
-                response.send({
-                    inserted: true
-                });
+                if(res.rowCount > 0) {
+                    response.send({
+                        inserted: 1
+                    });
+                }
+                else {
+                    response.send({
+                        inserted: -1
+                    });
+                }
             }
             else {
                 response.send({
-                    inserted: false
+                    inserted: 0
                 });
             }
         });
