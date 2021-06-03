@@ -13,6 +13,8 @@ const registerRouter = require("./registerRouter");
 const productRouter = require("./productRouter");
 const userRouter = require("./userRouter");
 const dataRouter = require("./dataRouter");
+const adminRouter = require("./adminRouter");
+const activityRouter = require("./activityRouter");
 
 const port = 5000;
 const postgresPort = 5432;
@@ -28,6 +30,8 @@ app.use("/", registerRouter);
 app.use("/product", productRouter);
 app.use("/user", userRouter);
 app.use("/data", dataRouter);
+app.use("/admin", adminRouter);
+app.use("/activity", activityRouter);
 
 /* Polaczenie z baza danych PostgreSQL */
 const pool = new Pool({

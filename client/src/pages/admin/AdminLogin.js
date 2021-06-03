@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import * as Yup from "yup";
 import {useFormik} from "formik";
 import axios from "axios";
+import adminAuth from "../../helpers/adminAuth";
 
 const AdminLogin = () => {
     const [logged, setLogged] = useState(false);
+
+    useEffect(() => {
+        adminAuth()
+            .then(res => {
+                if(res.data.loggedIn === 1) {
+                    window.location = "/admin-panel";
+                }
+            })
+    })
 
     const validationSchema = Yup.object({
         login: Yup.string()

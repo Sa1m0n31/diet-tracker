@@ -6,6 +6,7 @@ import FormatFunctions from "../../helpers/formatFunctions";
 
 import auth from "../../helpers/auth";
 import nutritionDataInitial from "../../helpers/nutritionDataInitial";
+import UserActivity from "../../components/UserActivity";
 
 const Panel = () => {
     let format = new FormatFunctions();
@@ -432,6 +433,9 @@ const Panel = () => {
                     <Line data={dataPhosphorus} />
                 </div>
             </div>
+
+            <UserActivity />
+
         </> : ""}
     </div>
 }

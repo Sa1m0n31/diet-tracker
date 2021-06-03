@@ -6,6 +6,7 @@ import hamburger from '../static/img/hamburger.png'
 import add from '../static/img/plus.png'
 import logoutImg from '../static/img/logout.png'
 import foodImg from '../static/img/food.png'
+import activity from '../static/img/sport.png'
 import axios from 'axios';
 
 const TopMenu = ({username, admin}) => {
@@ -56,6 +57,10 @@ const TopMenu = ({username, admin}) => {
                     <a className="siteMenu__list__item d-flex align-items-center mr-0 mr-lg-2 mr-xl-5 pr-3 pr-lg-5" href="/dodaj-produkt">
                         <img className="siteMenu__list__img" src={add} alt="dodaj-produkt" />
                         <span className="siteMenu__list__text">Dodaj produkt</span>
+                    </a>
+                    <a className="siteMenu__list__item d-flex align-items-center mr-0 mr-lg-2 mr-xl-5 pr-3 pr-lg-5" href="/dodaj-aktywnosc">
+                        <img className="siteMenu__list__img" src={activity} alt="dodaj-aktywnosc-fizyczna" />
+                        <span className="siteMenu__list__text">Dodaj aktywność</span>
                     </a>
                     <button className="siteMenu__list__item d-flex align-items-center" onClick={() => logout()}>
                         <img className="siteMenu__list__img" src={logoutImg} alt="wyloguj-sie" />

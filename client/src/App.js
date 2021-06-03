@@ -15,6 +15,8 @@ import AddMeal from "./pages/restricted/AddMeal";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminPanel from "./pages/admin/AdminPanel";
 import React from "react";
+import AdminAfterAction from "./pages/admin/AdminAfterAction";
+import AddActivityPage from "./pages/restricted/AddActivityPage";
 
 function App() {
   return (
@@ -44,11 +46,18 @@ function App() {
           <Route path="/dodaj-spozycie">
               <AddMeal />
           </Route>
+          <Route path="/dodaj-aktywnosc">
+              <AddActivityPage />
+          </Route>
+          {/* ADMIN ROUTES */}
           <Route path="/admin">
               <AdminLogin />
           </Route>
           <Route path="/admin-panel">
               <AdminPanel />
+          </Route>
+          <Route path="/admin-info">
+              <AdminAfterAction />
           </Route>
       </Switch>
     </Router>

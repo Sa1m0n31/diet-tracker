@@ -36,68 +36,31 @@ router.get("/get-all-products", (request, response) => {
     });
 });
 
-router.post("/add-product", async (request, response) => {
+/* Dodajemy produkt do poczekalni, gdzie czeka na akceptacje przez administratora */
+router.post("/add-product-to-waiting-room", (request, response) => {
     const values = request.body;
-    let kindId = 0, idOfInsertedRow;
-    let productInserted = false, nutritionInserted = false, macroInserted = false;
+    let inserted = 0;
 
-    /* Pobieramy id podanego rodzaju produktu */
-    await pool.query(`SELECT id FROM rodzaje_produktow WHERE nazwa = '${values.kind}'`, async (err, res) => {
-       if(res.rowCount > 0) {
-           /* Znaleziono podany rodzaj, zapisujemy id tego rodzaju */
-           kindId = res.rows[0].id;
-
-           /* Dodajemy produkt do tabeli PRODUKTY */
-           pool.query(`INSERT INTO produkty VALUES (nextval('productautoincrement'), ${kindId}, '${values.name}') RETURNING id`, async (err, res) => {
-               if(res) {
-                   idOfInsertedRow = res.rows[0].id;
-                   productInserted = true;
-               }
-
-               /* Dodajemy wartosci odzywcze do tabeli WARTOSCI_ODZYWCZE */
-               await pool.query(`INSERT INTO wartosci_odzywcze VALUES (nextval('wartosci_odzywcze_autoincrement'),
-                                                                                '${idOfInsertedRow}',
-                                                                                '${values.calories}',
-                                                                                '${values.fat}',
-                                                                                '${values.carbo}',
-                                                                                '${values.sugar}',
-                                                                                '${values.protein}',
-                                                                                '${values.salt}',
-                                                                                '${values.fiber}'
-            )`, (err, res) => {
-                   if(res) nutritionInserted = true;
-               });
-
-               /* Dodajemy makroelementy do tabeli MAKROELEMENTY */
-               await pool.query(`INSERT INTO makroelementy VALUES (nextval('makroelementy_autoincrement'),
-                                                                             ${idOfInsertedRow},
-                                                                             ${values.calcium},
-                                                                             ${values.chlorine},
-                                                                             ${values.magnesium},
-                                                                             ${values.phosphorus},
-                                                                             ${values.potassium}
-           )`, (err, res) => {
-                   if(res) macroInserted = true;
-
-                   if((productInserted)&&(nutritionInserted)&&(macroInserted)) {
-                       response.send({
-                           insert: 1
-                       });
-                   }
-                   else {
-                       response.send({
-                           insert: 0
-                       });
-                   }
-               });
-           });
-
-       }
-       else {
-           response.send({
-               insert: 0
-           });
-       }
+    pool.query(`INSERT INTO poczekalnia_produktow VALUES(nextval('poczekalnia_produktow_autoincrement'),
+                '${values.name}',
+                ${values.calories},
+                ${values.carbo},
+                ${values.fat},
+                ${values.sugar},
+                ${values.salt},
+                ${values.fiber},
+                ${values.magnesium},
+                ${values.potassium},
+                ${values.phosphorus},
+                ${values.chlorine},
+                ${values.calcium},
+                ${values.protein},
+                '${values.kind}'                                                          
+    )`, (err, res) => {
+        if(res) inserted = 1;
+        response.send({
+            inserted
+        });
     });
 });
 

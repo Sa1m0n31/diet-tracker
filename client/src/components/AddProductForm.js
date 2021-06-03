@@ -60,7 +60,7 @@ const AddProductForm = () => {
     const formik = useFormik({
         initialValues: {
             name: "",
-            kind: "Wybierz",
+            kind: "Owoce",
             calories: "",
             protein: "",
             fat: "",
@@ -76,9 +76,9 @@ const AddProductForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: values => {
-            axios.post("http://localhost:5000/product/add-product", values)
+            axios.post("http://localhost:5000/product/add-product-to-waiting-room", values)
                 .then(res => {
-                   if(res.data.insert === 1) {
+                   if(res.data.inserted === 1) {
                        /* Dodano produkt */
                        localStorage.setItem('diet-tracker-success', '1');
                    }

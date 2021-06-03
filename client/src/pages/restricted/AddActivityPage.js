@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
-
 import TopMenu from "../../components/TopMenu";
-import AfterProductInsert from "../../components/AfterProductInsert";
 import auth from "../../helpers/auth";
+import AddActivityForm from "../../components/AddActivityForm";
 
-const AfterProductInsertPage = () => {
+const AddActivityPage = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -15,10 +14,10 @@ const AfterProductInsertPage = () => {
             });
     }, []);
 
-    return <div className="container-fluid p-0">
-        {loggedIn ? <><TopMenu username={localStorage.getItem('diet-tracker-login')} />
-        <AfterProductInsert /></> : ""}
-    </div>
+    return <>{loggedIn ? <>
+            <TopMenu username={localStorage.getItem('diet-tracker-login')} />
+            <AddActivityForm />
+            </> : ""}</>
 }
 
-export default AfterProductInsertPage;
+export default AddActivityPage;

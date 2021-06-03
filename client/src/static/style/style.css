@@ -340,6 +340,39 @@ ul {
     font-weight: 400;
 }
 
+.userActivity__main {
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userActivity__main > * {
+    width: 45%;
+}
+
+.userActivity__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userActivity__main table {
+    width: 80%;
+}
+
+.userActivity__main th {
+    color: #fff;
+    background: #5A43DE;
+    border: 1px solid #fff;
+    padding: 10px 15px;
+}
+
+.userActivity__main td {
+    border: 1px solid #5A43DE;
+    padding: 10px 15px;
+}
+
 /* Add product */
 .addProductMain {
     margin: 200px 0 50px;
@@ -570,4 +603,51 @@ select {
     font-size: 13px;
     color: red;
     margin-bottom: 20px;
+}
+
+.adminPanel {
+    margin: 200px auto 100px;
+}
+
+.adminTable {
+    margin: auto;
+    display: block;
+    width: fit-content;
+    width: -moz-max-content;
+
+}
+
+.adminTable tr {
+    padding: 10px 0;
+}
+
+.adminTable td, .adminTable th {
+    padding: 10px;
+    border: 1px solid #5A43DE;
+}
+
+.adminTable__btn {
+    background: transparent;
+}
+
+.adminTable__btn__img {
+    width: 20px;
+    height: auto;
+}
+
+.adminAfterAction {
+    margin-top: 100px;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminAfterAction__header {
+    font-weight: 700;
+}
+
+.adminAfterAction__header--error {
+    color: red;
 }
