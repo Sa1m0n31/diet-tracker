@@ -1,5 +1,4 @@
 ---------- OPIS WSZYSTKICH TABEL WYSTĘPUJĄCYCH W BAZIE DANYCH ----------
-
 1. ADMINI
 Tabela zawiera login oraz hash hasła wszystkich administratorów systemu.
 

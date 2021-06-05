@@ -45,7 +45,7 @@ router.post("/add-product", async (request, response) => {
                 kindId = res.rows[0].id;
 
                 /* Dodajemy produkt do tabeli PRODUKTY */
-                pool.query(`INSERT INTO produkty VALUES (nextval('productautoincrement'), ${kindId}, '${productData.nazwa}') RETURNING id`, async (err, res) => {
+                pool.query(`INSERT INTO produkty VALUES (nextval('product_autoincrement'), ${kindId}, '${productData.nazwa}') RETURNING id`, async (err, res) => {
                     if(res) {
                         idOfInsertedRow = res.rows[0].id;
                         productInserted = true;

@@ -10,7 +10,7 @@ router.post("/register",(request, response) => {
     /* Haszujemy haslo */
     const hash = crypto.createHash('md5').update(form.password).digest('hex');
 
-    const query = `INSERT INTO uzytkownicy VALUES (nextval('uzytkownicyAutoincrement'), NULL, NULL, NULL, NULL, NULL, $1, $2, $3, NOW())`;
+    const query = `INSERT INTO uzytkownicy VALUES (nextval('uzytkownicy_autoincrement'), NULL, NULL, NULL, NULL, NULL, $1, $2, $3, NOW())`;
     const values = [form.email, form.login, hash];
 
     /* Wstawienie uzytkownika do bazy */

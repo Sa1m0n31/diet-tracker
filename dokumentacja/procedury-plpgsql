@@ -37,6 +37,67 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
+3. find_similar_product()
+Procedura wspomagająca proces weryfikacji nowych produktów. Przeszukuje złączenie tabel wartosci_odzywcze oraz makroelementy i wyszukuje
+w nim podobnych do dodawanego aktualnie przez użytkownika produktu. Jeśli w którymś z wierszy więcej niż 10 wartości odżywczych i makroelementów ma takie
+same ilości w 100 gramach - zwracany jest NULL, co oznacza odrzucenie dodania nowego wiersza.
+
+CREATE OR REPLACE FUNCTION find_similar_product() RETURNS TRIGGER AS $$
+DECLARE
+   arrow record;
+   similarities int;
+BEGIN
+	FOR arrow IN
+		SELECT w.kilokalorie, w.tluszcze, w.weglowodany, w.cukry, w.bialka, w.sole, w.blonnik, m.magnez, m.potas, m.wapn, m.chlor, m.fosfor FROM wartosci_odzywcze w
+		JOIN makroelementy m USING(id_produktu)
+	LOOP
+		similarities = 0;
+		IF NEW.kilokalorie = arrow.kilokalorie THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.tluszcze = arrow.tluszcze THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.weglowodany = arrow.weglowodany THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.cukry = arrow.cukry THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.bialka = arrow.bialka THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.sole = arrow.sole THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.blonnik = arrow.blonnik THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.magnez = arrow.magnez THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.potas = arrow.potas THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.fosfor = arrow.fosfor THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.chlor = arrow.chlor THEN
+			similarities := similarities + 1;
+		END IF;
+		IF NEW.wapn = arrow.wapn THEN
+			similarities := similarities + 1;
+		END IF;
+
+		IF similarities > 10 THEN
+			RETURN NULL;
+		END IF;
+	END LOOP;
+
+	RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
 ---------- TRIGGERY ----------
 1. check_number_of_meals_added_today
 Wykonuje procedurę check_number_of_meals_added_by_user przy każdym dodaniu wiersza do tabeli SPOZYCIE.
@@ -47,3 +108,8 @@ CREATE TRIGGER check_number_of_meals_added_today BEFORE INSERT ON spozycie FOR E
 Wykonuje procedurę check_number_of_activities_added_by_user przy każdym dodaniu wiersza do tabeli AKTYWNOSCI_FIZYCZNE.
 
 CREATE TRIGGER check_number_of_meals_added_today BEFORE INSERT ON spozycie FOR EACH ROW EXECUTE PROCEDURE check_number_of_meals_added_by_user();
+
+3. find_similar_product_before_insert
+Wykonuje procedurę find_similar_product przy każdym dodaniu wiersza do tabeli POCZEKALNIA_PRODUKTOW.
+
+CREATE TRIGGER find_similar_product_before_insert BEFORE INSERT ON poczekalnia_produktow FOR EACH ROW EXECUTE PROCEDURE find_similar_product();
