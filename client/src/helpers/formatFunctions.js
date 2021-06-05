@@ -19,17 +19,26 @@ class FormatFunctions {
         return parseInt(date.getMonth()) + 1 + "-" + date.getDate();
     }
 
-    /* Pobierz ostatnie 7 dni od dzisiaj */
-    static last7Days = () => {
+    static lastDays = n => {
         let result = [];
         let i;
-        for (i=6; i>=0; i--) {
+        for (i=n-1; i>=0; i--) {
             let d = new Date();
             d.setDate(d.getDate() - i);
             result.push(this.formatDate(d));
         }
 
         return result;
+    }
+
+    /* Pobierz ostatnie 7 dni od dzisiaj */
+    static last7Days = () => {
+        return this.lastDays(7);
+    }
+
+    /* Pobierz ostatnie 30 dni od dzisiaj */
+    static last30Days = () => {
+        return this.lastDays(30);
     }
 }
 

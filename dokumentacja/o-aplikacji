@@ -45,4 +45,4 @@ Aplikacja jest odporna na ataki SQL Injection dzięki wykorzystaniu parameterize
 użytkownika nie są wysyłane w formie konkatenacji tekstu, lecz rodzielone na część zawierającą zapytanie (w aplikacji zawsze zmienna query) oraz część zawierającą parametry
 (w aplikacji zawsze zmienna values), co nie dopuszcza do "wstrzyknięcia" kodu SQL.
 
-Hasło do bazy danych przechowywane jest tylko po stronie serwera, nie jest dostępne dla użytkownika od strony przeglądarki.
+Hasło do bazy danych przechowywane jest tylko po stronie serwera, w jednym pliku (server/databaseConnection.js), nie jest dostępne dla użytkownika od strony przeglądarki.

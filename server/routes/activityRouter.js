@@ -1,17 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { Pool, Client } = require("pg");
-const postgresPort = 5432;
 const moment = require("moment");
-
-/* Polaczenie z baza danych PostgreSQL */
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'diet-tracker',
-    password: 'admin',
-    port: postgresPort
-});
+const pool = require("../databseConnection");
 
 /* Pobieramy wszystkie dyscypliny sportu */
 router.get("/get-all-sports", (request, response) => {

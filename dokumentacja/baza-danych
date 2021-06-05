@@ -48,3 +48,6 @@ ustawione jako null.
 13. WARTOSCI_ODZYWCZE
 Tabla przechowująca ilości wartości odżywczych (kilokalorie, tłuszcze, węglowodany, cukry, białka, sole, błonnik) w 100 gramch
 poszczególnych produktów (zawiera klucz obcy do tabeli produkty - id_produktu).
+
+---------- MIEJSCE WYSYŁANIA ZAPYTAŃ ----------
+Wszystkie zapaytania wysyłane do bazy danych znajdują się w plikach katalogu server/routes.

@@ -13,6 +13,7 @@ const MyAccountForm = () => {
     let [login, setLogin] = useState("");
     let [height, setHeight] = useState(null);
     let [weight, setWeight] = useState(null);
+    let [msg, setMsg] = useState("");
 
     useEffect(() => {
         const userData = getUserData();
@@ -22,7 +23,7 @@ const MyAccountForm = () => {
             setLastName(res.surname);
             if(res.gender === 'm') setGender("Mężczyzna");
             else setGender("Kobieta");
-            setLogin(res.login);1
+            setLogin(res.login);
             setHeight(res.height);
             setWeight(res.weight);
         });
@@ -49,7 +50,7 @@ const MyAccountForm = () => {
             values['id'] = id;
             axios.post("http://localhost:5000/user/edit-user", values)
                 .then(res => {
-                    console.log(res.data);
+                    if(res.data) setMsg("Dane zostały zmienione");
                 });
         }
     });
@@ -113,6 +114,10 @@ const MyAccountForm = () => {
                 Zmień dane
             </button>
         </form>
+        <div className="myAccount__errors">
+            {formik.errors.login ? formik.errors.login : ""}
+            {msg === "" ? "" : msg}
+        </div>
     </main>
 }
 

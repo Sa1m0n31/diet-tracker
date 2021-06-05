@@ -1,16 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Pool, Client } = require("pg");
-const postgresPort = 5432;
-
-/* Polaczenie z baza danych PostgreSQL */
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'diet-tracker',
-    password: 'admin',
-    port: postgresPort
-});
+const pool = require("../databseConnection");
 
 router.post("/get-weekly-stats", (request, response) => {
     const userId = request.body.userId;
@@ -23,6 +13,29 @@ USING(id_produktu)
 JOIN spozycie s
 ON m.id_produktu = s.id_produktu
 WHERE s.id_uzytkownika = $1 AND s.data > NOW()::date - 7
+GROUP BY s.data`;
+    const values = [userId];
+
+    pool.query(query, values, (err, res) => {
+        if(res) {
+            response.send({
+                rows: res.rows
+            });
+        }
+    })
+});
+
+router.post("/get-monthly-stats", (request, response) => {
+    const userId = request.body.userId;
+    const query = `SELECT s.data::date + 1 as data, SUM(w.kilokalorie * ilosc / 100) kilokalorie, SUM(w.tluszcze * ilosc / 100) tluszcze, 
+SUM(w.cukry * ilosc / 100) cukry, SUM(w.weglowodany * ilosc / 100) weglowodany, SUM(w.bialka * ilosc / 100) bialka, SUM(w.sole * ilosc / 100) sole, SUM(w.blonnik * ilosc / 100) blonnik, 
+SUM(m.chlor * ilosc / 100) chlor, SUM(m.wapn * ilosc / 100) wapn, SUM(m.magnez * ilosc / 100) magnez, SUM(m.fosfor * ilosc / 100) fosfor, SUM(m.potas * ilosc / 100) potas, SUM(s.ilosc) ilosc
+FROM wartosci_odzywcze w 
+JOIN makroelementy m 
+USING(id_produktu)
+JOIN spozycie s
+ON m.id_produktu = s.id_produktu
+WHERE s.id_uzytkownika = $1 AND s.data > NOW()::date - 30
 GROUP BY s.data`;
     const values = [userId];
 

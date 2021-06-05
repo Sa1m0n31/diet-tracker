@@ -340,6 +340,32 @@ ul {
     font-family: 'Permanent Marker', cursive;
 }
 
+.dashboardButtons {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button--period {
+    margin: 0 30px;
+    padding: 10px 30px;
+    height: 50px;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #5A43DE;
+    color: #333333;
+}
+
+.button--period:hover {
+    color: #fff;
+}
+
+.button--current {
+    background: #5A43DE;
+    color: #fff;
+}
+
 .charts {
     margin: 140px auto 100px;
     display: flex;
@@ -574,6 +600,11 @@ select {
     grid-template-rows: repeat(3, 1fr);
     max-width: 1600px;
     margin: auto;
+}
+
+.myAccount__errors {
+    text-align: center;
+    font-size: 14px;
 }
 
 .label--myAccount {

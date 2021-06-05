@@ -3,21 +3,15 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
-const session = require("express-session");
-const PostgreSqlStore = require("connect-pg-simple")(session);
-const { Pool, Client } = require("pg");
-
+const port = 5000;
 const app = express();
 
-const registerRouter = require("./registerRouter");
-const productRouter = require("./productRouter");
-const userRouter = require("./userRouter");
-const dataRouter = require("./dataRouter");
-const adminRouter = require("./adminRouter");
-const activityRouter = require("./activityRouter");
-
-const port = 5000;
-const postgresPort = 5432;
+const registerRouter = require("./routes/registerRouter");
+const productRouter = require("./routes/productRouter");
+const userRouter = require("./routes/userRouter");
+const dataRouter = require("./routes/dataRouter");
+const adminRouter = require("./routes/adminRouter");
+const activityRouter = require("./routes/activityRouter");
 
 /* Oprogramowanie posredniczace */
 app.use(cors());
@@ -32,25 +26,6 @@ app.use("/user", userRouter);
 app.use("/data", dataRouter);
 app.use("/admin", adminRouter);
 app.use("/activity", activityRouter);
-
-/* Polaczenie z baza danych PostgreSQL */
-const pool = new Pool({
-   user: 'postgres',
-   host: 'localhost',
-   database: 'diet-tracker',
-   password: 'admin',
-   port: postgresPort
-});
-
-app.use(session({
-   store : new PostgreSqlStore({
-      conString: "postgres://postgres:admin@localhost:5432/diet-tracker"
-   }),
-   secret: "supersecretkey",
-   resave: false,
-   saveUninitialized: false,
-   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
-}));
 
 /* Frontend aplikacji */
 app.use(express.static(path.join(__dirname, '../client/build')));

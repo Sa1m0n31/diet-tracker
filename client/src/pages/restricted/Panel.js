@@ -1,28 +1,37 @@
-import React, {useState, useEffect, useMemo} from "react";
+import React, {useState, useEffect, useRef, useMemo} from "react";
 import TopMenu from "../../components/TopMenu";
 import axios from 'axios'
 import { Line } from 'react-chartjs-2'
 import FormatFunctions from "../../helpers/formatFunctions";
 
 import auth from "../../helpers/auth";
-import nutritionDataInitial from "../../helpers/nutritionDataInitial";
+import { nutritionDataInitial7, nutritionDataInitial30 } from "../../helpers/nutritionDataInitial";
 import UserActivity from "../../components/UserActivity";
 import MealsDetails from "../../components/MealsDetails";
 
 const Panel = () => {
     let format = new FormatFunctions();
     let last7Days = FormatFunctions.last7Days();
+    let last30Days = FormatFunctions.last30Days();
+    let array7 = [0, 0, 0, 0, 0, 0, 0];
+    let array30 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    const btnWeek = useRef(null);
+    const btnMonth = useRef(null);
 
     let [loggedIn, setLoggedIn] = useState(false);
     let [calories, setCalories] = useState(parseInt(localStorage.getItem('diet-tracker-cpm')));
     let [protein, setProtein] = useState(parseInt(localStorage.getItem('diet-tracker-protein')));
     let [carbo, setCarbo] = useState(parseInt(localStorage.getItem('diet-tracker-carbo')));
     let [magnessium, setMagnessium] = useState(parseFloat(localStorage.getItem('diet-tracker-magnessium')));
-    let [data, setData] = useState(nutritionDataInitial);
+    let [data7, setData7] = useState(nutritionDataInitial7);
+    let [data30, setData30] = useState(nutritionDataInitial30);
     let [chartTrigger, setChartTrigger] = useState(0);
+    let [mode, setMode] = useState(30);
+    let [currentArray, setCurrentArray] = useState([]);
+    let [lastDays, setLastDays] = useState(last30Days);
 
     useEffect(() => {
-
         auth()
             .then(res => {
                 if(res.data.loggedIn === 1) setLoggedIn(true);
@@ -34,7 +43,7 @@ const Panel = () => {
             userId: localStorage.getItem('diet-tracker-userId')
         })
             .then(res => {
-                let dataInitial = nutritionDataInitial;
+                let dataInitial = nutritionDataInitial7;
                 res.data.rows.forEach(item => {
                    const indexOfDate = findDateInLast7Days(format.removeTrailingZeros(item.data.substring(5, 10)));
                    if(indexOfDate !== null) {
@@ -43,10 +52,60 @@ const Panel = () => {
                 });
 
                 dataInitial.reverse();
-                setData(dataInitial);
+                setData7(dataInitial);
                 setChartTrigger(1);
             });
+
+        /* Pobranie danych o posilkach uzytkownika z ostatniego miesiaca */
+        axios.post("http://localhost:5000/data/get-monthly-stats", {
+            userId: localStorage.getItem('diet-tracker-userId')
+        })
+            .then(res => {
+                let dataInitial = nutritionDataInitial30;
+                res.data.rows.forEach(item => {
+                    const indexOfDate = findDateInLast30Days(format.removeTrailingZeros(item.data.substring(5, 10)));
+                    if(indexOfDate !== null) {
+                        dataInitial[indexOfDate] = item;
+                    }
+                });
+
+                dataInitial.reverse();
+                setData30(dataInitial);
+                setChartTrigger(2);
+            });
     }, []);
+
+    useEffect(() => {
+        if(mode === 7) {
+            setCurrentArray(array7);
+            setLastDays(last7Days);
+            if(btnMonth.current) {
+                btnWeek.current.style.background = "#5A43DE";
+                btnWeek.current.style.color = "#fff";
+                btnMonth.current.style.background = "transparent";
+                btnMonth.current.style.color = "#333333";
+            }
+        }
+        else {
+            setCurrentArray(array30);
+            setLastDays(last30Days);
+            if(btnMonth.current) {
+                btnMonth.current.style.background = "#5A43DE";
+                btnMonth.current.style.color = "#fff";
+                btnWeek.current.style.background = "transparent";
+                btnWeek.current.style.color = "#333333";
+            }
+        }
+        setChartTrigger(chartTrigger+1);
+    }, [mode]);
+
+    const findDateInLast30Days = (date) => {
+        let indexOfDate = null;
+        last30Days.forEach((item, index) => {
+            if(item === date) indexOfDate = index;
+        });
+        return indexOfDate;
+    }
 
     const findDateInLast7Days = (date) => {
         let indexOfDate = null;
@@ -57,24 +116,21 @@ const Panel = () => {
     }
 
     const dataCalories = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [calories, calories, calories, calories, calories, calories, calories],
+                data: currentArray.map(item => (
+                    calories
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].kilokalorie,
-                    data[5].kilokalorie,
-                    data[4].kilokalorie,
-                    data[3].kilokalorie,
-                    data[2].kilokalorie,
-                    data[1].kilokalorie,
-                    data[0].kilokalorie
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].kilokalorie;
+                    else return data30[index].kilokalorie;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
@@ -82,24 +138,21 @@ const Panel = () => {
 
     const dataProtein = useMemo(() => (
         {
-            labels: last7Days,
+            labels: lastDays,
             datasets: [
                 {
                     label: "Zalecane dzienne spozycie",
-                    data: [protein, protein, protein, protein, protein, protein, protein],
+                    data: currentArray.map(item => (
+                        protein
+                    )),
                     backgroundColor: 'rgb(255, 99, 132)'
                 },
                 {
                     label: "Wynik",
-                    data: [
-                        data[6].bialka,
-                        data[5].bialka,
-                        data[4].bialka,
-                        data[3].bialka,
-                        data[2].bialka,
-                        data[1].bialka,
-                        data[0].bialka
-                    ],
+                    data: currentArray.map((item, index) => {
+                        if(mode === 7) return data7[index].bialka;
+                        else return data30[index].bialka;
+                    }).reverse(),
                     backgroundColor: '#010101'
                 }
             ]
@@ -107,235 +160,203 @@ const Panel = () => {
     ), [chartTrigger]);
 
     const dataCarbo = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [carbo, carbo, carbo, carbo, carbo, carbo, carbo],
+                data: currentArray.map(item => (
+                    carbo
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].weglowodany,
-                    data[5].weglowodany,
-                    data[4].weglowodany,
-                    data[3].weglowodany,
-                    data[2].weglowodany,
-                    data[1].weglowodany,
-                    data[0].weglowodany
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].weglowodany;
+                    else return data30[index].weglowodany;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataFiber = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [30, 30, 30, 30, 30, 30, 30],
+                data: currentArray.map(item => (
+                    30
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].blonnik,
-                    data[5].blonnik,
-                    data[4].blonnik,
-                    data[3].blonnik,
-                    data[2].blonnik,
-                    data[1].blonnik,
-                    data[0].blonnik
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].blonnik;
+                    else return data30[index].blonnik;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataSugar = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [50, 50, 50, 50, 50, 50, 50],
+                data: currentArray.map(item => (
+                    50
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].cukry,
-                    data[5].cukry,
-                    data[4].cukry,
-                    data[3].cukry,
-                    data[2].cukry,
-                    data[1].cukry,
-                    data[0].cukry
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].cukry;
+                    else return data30[index].cukry;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataMagnessium = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [magnessium, magnessium, magnessium, magnessium, magnessium, magnessium, magnessium],
+                data: currentArray.map(item => (
+                    magnessium
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].magnez,
-                    data[5].magnez,
-                    data[4].magnez,
-                    data[3].magnez,
-                    data[2].magnez,
-                    data[1].magnez,
-                    data[0].magnez
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].magnez;
+                    else return data30[index].magnez;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataSalt = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [5, 5, 5, 5, 5, 5, 5],
+                data: currentArray.map(item => (
+                    5
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].sole,
-                    data[5].sole,
-                    data[4].sole,
-                    data[3].sole,
-                    data[2].sole,
-                    data[1].sole,
-                    data[0].sole
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].sole;
+                    else return data30[index].sole;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataCalcium = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [1, 1, 1, 1, 1, 1, 1],
+                data: currentArray.map(item => (
+                    1
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].wapn,
-                    data[5].wapn,
-                    data[4].wapn,
-                    data[3].wapn,
-                    data[2].wapn,
-                    data[1].wapn,
-                    data[0].wapn
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].wapn;
+                    else return data30[index].wapn;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataChlorine = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3],
+                data: currentArray.map(item => (
+                    2.3
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].chlor,
-                    data[5].chlor,
-                    data[4].chlor,
-                    data[3].chlor,
-                    data[2].chlor,
-                    data[1].chlor,
-                    data[0].chlor
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].chlor;
+                    else return data30[index].chlor;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataPotassium = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5],
+                data: currentArray.map(item => (
+                    2.5
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].potas,
-                    data[5].potas,
-                    data[4].potas,
-                    data[3].potas,
-                    data[2].potas,
-                    data[1].potas,
-                    data[0].potas
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].potas;
+                    else return data30[index].potas;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataPhosphorus = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Zalecane dzienne spozycie",
-                data: [0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7],
+                data: currentArray.map(item => (
+                    0.7
+                )),
                 backgroundColor: 'rgb(255, 99, 132)'
             },
             {
                 label: "Wynik",
-                data: [
-                    data[6].fosfor,
-                    data[5].fosfor,
-                    data[4].fosfor,
-                    data[3].fosfor,
-                    data[2].fosfor,
-                    data[1].fosfor,
-                    data[0].fosfor
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].fosfor;
+                    else return data30[index].fosfor;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
     }), [chartTrigger]);
 
     const dataFats = useMemo(() => ({
-        labels: last7Days,
+        labels: lastDays,
         datasets: [
             {
                 label: "Wynik",
-                data: [
-                    data[6].tluszcze,
-                    data[5].tluszcze,
-                    data[4].tluszcze,
-                    data[3].tluszcze,
-                    data[2].tluszcze,
-                    data[1].tluszcze,
-                    data[0].tluszcze
-                ],
+                data: currentArray.map((item, index) => {
+                    if(mode === 7) return data7[index].tluszcze;
+                    else return data30[index].tluszcze;
+                }).reverse(),
                 backgroundColor: '#010101'
             }
         ]
@@ -346,8 +367,17 @@ const Panel = () => {
 
         {loggedIn ? <>
             <h1 className="dashboardHeader">
-                Twoje wyniki z ostatniego tygodnia
+                Twoje wyniki z ostatniego
             </h1>
+
+            <div className="dashboardButtons">
+                <button ref={btnMonth} className="button button--period button--current" onClick={() => setMode(30)}>
+                    Miesiąca
+                </button>
+                <button ref={btnWeek} className="button button--period" onClick={() => setMode(7)}>
+                    Tygodnia
+                </button>
+            </div>
 
             <div className="charts">
                 <div className="chartContainer">
