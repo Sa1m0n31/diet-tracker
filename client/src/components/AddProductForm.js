@@ -60,7 +60,7 @@ const AddProductForm = () => {
     const formik = useFormik({
         initialValues: {
             name: "",
-            kind: "Owoce",
+            kind: "owoce",
             calories: "",
             protein: "",
             fat: "",
@@ -235,6 +235,15 @@ const AddProductForm = () => {
                     />
                 </label>
             </span>
+
+            <ul className="addProductForm__notes">
+                <li className="addProductForm__notes__item">
+                    * jednostka wartości odżywczych - liczba gramów danego składnika w 100 gramach produktu
+                </li>
+                <li className="addProductForm__notes__item">
+                    * jednostka makroelementów - liczba miligramów danego składnia w 100 gramach produktu
+                </li>
+            </ul>
 
             <button type="submit" className="button button--addProduct">
                 Dodaj produkt

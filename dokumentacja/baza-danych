@@ -1,0 +1,50 @@
+---------- OPIS WSZYSTKICH TABEL WYSTĘPUJĄCYCH W BAZIE DANYCH ----------
+
+1. ADMINI
+Tabela zawiera login oraz hash hasła wszystkich administratorów systemu.
+
+2. AKTYWNOSCI_FIZYCZNE
+Tabela umożliwiająca połączenie relacją wiele-do-wielu encji uzytkownicy oraz sport. Zawiera
+trzy kolumny - id, id_uzytkownika (klucz obcy do tabeli uzytkownicy) oraz id_sportu (klucz obcy do tabeli sport).
+
+3. DYSCYPLINY_SPORTU
+Prosta tabela przechowująca nazwy poszczególnych dyscyplin sportu, wykorzystywanych przy dodawaniu aktywności fizycznych.
+
+4. MAKROELEMENTY
+Tabela przechowująca ilości makroelementów (magnezu, potasu, fosforu, wapnia i chloru) w 100 gramach poszczególnych produktach (zawiera klucz
+obcy do tabeli produkty - id_produktu).
+
+5. POCZEKALNIA_PRODUKTOW
+Tabela, do której trafiają wszystkie informacje o danym produkcie, po dodaniu go przez zwykłego użytkownika i przed zatwierdzeniem
+lub odrzuceniem go przez administratora. Używana w panelu administratora, przy wyświetlaniu informacji o produktach w poczekalni.
+
+6. PRODUKTY
+Tabla przechowująca nazwę oraz id rodzaju wszystkich produktów zatwierdzonych przed administratorów.
+
+7. RODZAJE_PRODUKTOW
+Dwukolumnowa tabela zawierająca id oraz nazwę rodzaju produktu.
+
+8. SESJE
+Tabla przechowująca sesje użytkowników - unikalny klucz sesji oraz datę jej wygaśnięcia, ustalaną przy wstawianiu
+wiersza na pół godziny w przód od aktualnej daty i godziny, modyfikowanej o pół godziny w przód od aktualnej daty i godziny
+przy każdej akcji użytkownika w systemie.
+
+9. SESJE_ADMINOW
+Analogiczna do powyższej tabela dla sesji administratorów systemu.
+
+10. SPORT
+Tabela przechowująca informację o aktywnościach fizycznych użytkownika - id dyscypliny, czas trwania
+aktywności fizycznej w minutach oraz datę.
+
+11. SPOZYCIE
+Tabela pozwalająca połączyć relacją wiele-do-wielu encje uzytkownicy oraz produkt. Oprócz kluczy obcych
+do obu tych tabel, w tabeli tej znajdują się również informacje o dacie spożycia oraz ilości spożytego pokarmu w gramach.
+
+12. UZYTKOWNICY
+Tabela zawierająca podstawowe informacje o użytkowniku. Przy rejestracji ustawiane są tylko kolumny email, login, hasło oraz data_rejestracji,
+następnie po zalogowaniu użytkownik może wypełnić pozostałe informacje (imię, nazwisko, wzrost, waga, płeć) - przy pierwszym wstawianiu
+ustawione jako null.
+
+13. WARTOSCI_ODZYWCZE
+Tabla przechowująca ilości wartości odżywczych (kilokalorie, tłuszcze, węglowodany, cukry, białka, sole, błonnik) w 100 gramch
+poszczególnych produktów (zawiera klucz obcy do tabeli produkty - id_produktu).

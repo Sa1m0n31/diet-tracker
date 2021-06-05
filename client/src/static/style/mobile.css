@@ -1,4 +1,16 @@
+@media(max-width: 1500px) {
+    /* TopMenu */
+    .siteMenu__list__text {
+        font-size: 14px;
+    }
+}
+
 @media(max-width: 1400px) {
+    /* TopMenu */
+    .siteMenu__header a {
+        font-size: 24px;
+    }
+
     /* MainPage */
     .landing__header {
         font-size: 42px;
@@ -18,9 +30,6 @@
 
 @media(max-width: 1200px) {
     /* TopMenu */
-    .siteMenu__list__img {
-        height: 50%;
-    }
 
     /* MainPage */
     .landing_header {
@@ -40,10 +49,6 @@
 
     .landing__right {
         margin-bottom: 80px;
-    }
-
-    .siteMenu__header a {
-        font-size: 32px;
     }
 
     /* LoginPage */
@@ -82,6 +87,15 @@
 
     .charts {
         margin-top: 30px;
+    }
+
+    .userActivity__main {
+        flex-direction: column;
+    }
+
+    .userActivity__main > * {
+        width: 90%;
+        margin-bottom: 50px;
     }
 }
 
@@ -145,6 +159,11 @@
 }
 
 @media(max-width: 576px) {
+    /* Main page */
+    .button--landing {
+        width: 200px;
+    }
+
     /* Register form */
     .registerForm__form {
         width: 90%;

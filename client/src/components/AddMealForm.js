@@ -56,8 +56,8 @@ const AddMealForm = () => {
             })
                 .then(res => {
                     setInserted(true);
-                    if(res.inserted === 1) setInsertedMsg("Dodano spozycie produktu");
-                    else if(res.inserted === 0) setInsertedMsg("Wystapil blad. Prosimy sprobowac poxniej");
+                    if(res.data.inserted === 1) setInsertedMsg("Dodano spozycie produktu");
+                    else if(res.data.inserted === 0) setInsertedMsg("Wystapil blad. Prosimy sprobowac poxniej");
                     else setInsertedMsg("Z tego konta dodano juz dzis 10 posilkow. Nie mozna ich dodac wiecej jednego dnia. Zapraszamy jutro.");
                 });
         }

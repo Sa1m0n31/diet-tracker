@@ -2,6 +2,7 @@ import React, {useState, useEffect, useMemo} from "react";
 import axios from "axios";
 import FormatFunctions from "../helpers/formatFunctions";
 import {Bar} from "react-chartjs-2";
+import deleteImg from '../static/img/delete.png'
 
 const UserActivity = () => {
     const dataInitial = [
@@ -46,7 +47,6 @@ const UserActivity = () => {
                    const format = new FormatFunctions();
                    res.data.result.forEach(item => {
                        const indexOfDate = findDateInLast7Days(format.removeTrailingZeros(item.data.substring(5, 10)));
-                       console.log(indexOfDate);
                        if(indexOfDate !== null) {
                            dataInitial[indexOfDate] = item;
                        }
@@ -56,7 +56,7 @@ const UserActivity = () => {
                    setUpdate(1);
                }
             });
-    }, []);
+    }, [update]);
 
     const activityData = useMemo(() => (
         {
@@ -79,6 +79,15 @@ const UserActivity = () => {
         }
     ), [update]);
 
+    const deleteActivity = (id) => {
+        axios.post("http://localhost:5000/activity/delete-activity", {
+            id
+        })
+            .then(res => {
+               setUpdate(update+1);
+            });
+    }
+
     return <section className="userActivity">
         <h1 className="dashboardHeader">
             Twoja aktywność fizyczna
@@ -94,15 +103,23 @@ const UserActivity = () => {
                             <th>Aktywność</th>
                             <th>Czas trwania</th>
                             <th>Data</th>
+                            <th>Usuń</th>
                         </tr>
                     </thead>
+                    <tbody>
                     {data.map((item, index) => (
                         <tr>
                             <td>{item.nazwa}</td>
                             <td>{item.czas_trwania} min</td>
                             <td>{item.data.substring(0, 10)}</td>
+                            <td>
+                                <button className="userActivity__delete" onClick={() => deleteActivity(item.id)}>
+                                    <img className="userActivity__delete__img" src={deleteImg} alt="usuń" />
+                                </button>
+                            </td>
                         </tr>
                     ))}
+                    </tbody>
                 </table> : ""}
             </div>
         </main>

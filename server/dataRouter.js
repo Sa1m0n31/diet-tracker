@@ -36,4 +36,34 @@ GROUP BY s.data;`, (err, res) => {
     })
 });
 
+router.post("/get-meals-details", (request, response) => {
+   const id = request.body.id;
+
+   pool.query(`SELECT s.id, p.nazwa, s.data, s.ilosc FROM spozycie s
+JOIN produkty p ON s.id_produktu = p.id
+WHERE id_uzytkownika = ${id} ORDER BY s.data DESC LIMIT 30`, (err, res) => {
+      if(res) {
+          response.send({
+              result: res.rows
+          });
+      }
+      else {
+          response.send({
+              result: null
+          });
+      }
+   });
+});
+
+/* Usuwanie posiłku */
+router.post("/delete-meal", (request, response) => {
+   const id = request.body.id;
+
+   pool.query(`DELETE FROM spozycie WHERE id = ${id}`, (err, res) => {
+      response.send({
+          result: 1
+      });
+   });
+});
+
 module.exports = router;

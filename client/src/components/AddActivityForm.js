@@ -40,8 +40,11 @@ const AddActivityForm = () => {
             .then(res => {
                 console.log(sport);
                setInserted(true);
-               if(res.data.result) {
+               if(res.data.result === 1) {
                    setInsertedMsg("Aktywność fizyczna została dodana");
+               }
+               else if(res.data.result === 0) {
+                   setInsertedMsg("Z tego konta dodano już dziś maksymalną ilość 5 aktywności fizycznych. Zapraszamy jutro!");
                }
                else {
                    setInsertedMsg("Wystąpił problem z dodaniem aktywności fizycznej. Proszę spróbować później.");

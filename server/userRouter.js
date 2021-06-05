@@ -24,6 +24,43 @@ router.get("/get-user-data", (request, response) => {
     });
 });
 
+/* Zmiana hasła użytkownika */
+router.post("/change-password", (request, response) => {
+   const userId = request.body.id;
+   const oldPassword = request.body.oldPassword;
+   const newPassword = request.body.newPassword;
+
+   pool.query(`SELECT haslo FROM uzytkownicy WHERE id = ${userId}`, (err, res) => {
+      if(res.rowCount === 1) {
+          if(res.rows[0].haslo === crypto.createHash('md5').update(oldPassword).digest('hex')) {
+              const newPasswordHash = crypto.createHash('md5').update(newPassword).digest('hex');
+              pool.query(`UPDATE uzytkownicy SET haslo = '${newPasswordHash}' WHERE id = ${userId}`, (err, res) => {
+                  if(res) {
+                      response.send({
+                          result: 1
+                      });
+                  }
+                  else {
+                      response.send({
+                          result: -1
+                      });
+                  }
+              })
+          }
+          else {
+              response.send({
+                  result: 0
+              })
+          }
+      }
+      else {
+          response.send({
+              result: -1
+          })
+      }
+   });
+});
+
 /* Edycja danych uzytkownika */
 router.post("/edit-user", (request, response) => {
     const values = request.body;

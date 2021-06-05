@@ -81,7 +81,7 @@ ul {
 }
 
 .siteMenu__list__img {
-    height: 50%;
+    height: 30%;
     width: auto;
 }
 
@@ -92,6 +92,7 @@ ul {
     text-transform: uppercase;
     margin-left: 20px;
     transition: .2s all;
+    font-size: 15px;
 }
 
 .siteMenu__list__item {
@@ -110,6 +111,28 @@ ul {
 
 .siteMenu__hamburgerBtn__img {
     width: 100%;
+    height: auto;
+}
+
+/* Mobile menu */
+.mobileMenu {
+    width: 100%;
+    padding: 20px;
+    background: #6C63FF;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobileMenu .siteMenu__list__item {
+    margin-bottom: 20px;
+}
+
+.mobileMenu .siteMenu__list__img {
+    width: 20px;
     height: auto;
 }
 
@@ -361,21 +384,53 @@ ul {
     width: 80%;
 }
 
-.userActivity__main th {
+.mealsDetails__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.mealsDetails__main table {
+    margin: 50px auto;
+    display: block;
+}
+
+.userActivity__main th, .mealsDetails__main th {
     color: #fff;
     background: #5A43DE;
     border: 1px solid #fff;
     padding: 10px 15px;
 }
 
-.userActivity__main td {
+.userActivity__main td, .mealsDetails__main td {
     border: 1px solid #5A43DE;
     padding: 10px 15px;
+}
+
+.mealsDetails__main td, .mealsDetails__main th {
+    padding: 10px 40px;
+}
+
+.userActivity__delete {
+    opacity: .7;
+    transition: .2s all;
+    background: transparent;
+}
+
+.userActivity__delete:hover {
+    opacity: 1;
+}
+
+.userActivity__delete__img {
+    width: 20px;
+    height: auto;
 }
 
 /* Add product */
 .addProductMain {
     margin: 200px 0 50px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -451,6 +506,16 @@ select {
     border-radius: 50px;
 }
 
+.addProductForm__notes {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.addProductForm__notes__item {
+    font-size: 12px;
+    text-align: center;
+}
+
 /* After product insert */
 .afterProductInsertMain {
     margin-top: 50vh;
@@ -487,6 +552,19 @@ select {
     text-align: center;
     margin-bottom: 40px;
     font-family: 'Permanent Marker', cursive;
+}
+
+.changePasswordForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.changePasswordForm .label--myAccount {
+    width: 100%;
 }
 
 .mainAccountForm {
@@ -561,10 +639,6 @@ select {
 }
 
 /* Add meal */
-.label--addMeal {
-    white-space: nowrap;
-}
-
 .label--addMeal .input {
     margin-left: 30px;
     width: 70px;
@@ -606,6 +680,7 @@ select {
 }
 
 .adminPanel {
+    overflow-x: auto;
     margin: 200px auto 100px;
 }
 

@@ -1,6 +1,6 @@
 ---------- PROCEDURY ----------
 1. check_number_of_meals_added_by_user()
-Sprawdza liczbe dodanych posiłków przez danego użytkownika w ciągu aktualnego dnia. Jeśli jest większa niż 10 - nie pozwala
+Sprawdza liczbe dodanych posiłków przez danego użytkownika w ciągu aktualnego dnia. Jeśli jest większa bądź równa 10 - nie pozwala
 na dodanie kolejnego wiersza.
 
 CREATE OR REPLACE FUNCTION check_number_of_meals_added_by_user()
@@ -10,9 +10,26 @@ DECLARE
 	test text;
 BEGIN
 	SELECT COUNT(*) INTO meals_added FROM spozycie WHERE id_uzytkownika = NEW.id_uzytkownika AND data = NOW()::date;
-	RAISE NOTICE 'number: %', meals_added;
-	RAISE NOTICE 'test';
 	IF meals_added >= 10 THEN
+		RETURN NULL;
+	ELSE
+		RETURN NEW;
+	END IF;
+END
+$$ LANGUAGE plpgsql;
+
+2. check_number_of_activities_added_by_user()
+Sprawdza liczbe dodanych aktywności fizycznych przez danego użytkownika w ciągu aktualnego dnia. Jeśli jest większa bądź równa 5 - nie pozwala
+na dodanie kolejnego wiersza.
+
+CREATE OR REPLACE FUNCTION check_number_of_activities_added_by_user()
+RETURNS TRIGGER AS $$
+DECLARE
+	activities_added int;
+BEGIN
+	SELECT COUNT(*) INTO activities_added FROM aktywnosci_fizyczne JOIN sport ON sport.id = aktywnosci_fizyczne.id_sportu
+	WHERE aktywnosci_fizyczne.id_uzytkownika = 28 AND sport.data = NOW()::date;
+	IF activities_added >= 5 THEN
 		RETURN NULL;
 	ELSE
 		RETURN NEW;
@@ -23,3 +40,10 @@ $$ LANGUAGE plpgsql;
 ---------- TRIGGERY ----------
 1. check_number_of_meals_added_today
 Wykonuje procedurę check_number_of_meals_added_by_user przy każdym dodaniu wiersza do tabeli SPOZYCIE.
+
+CREATE TRIGGER check_number_of_meals_added_today BEFORE INSERT ON spozycie FOR EACH ROW EXECUTE PROCEDURE check_number_of_meals_added_by_user();
+
+2. check_number_of_activities_added_today
+Wykonuje procedurę check_number_of_activities_added_by_user przy każdym dodaniu wiersza do tabeli AKTYWNOSCI_FIZYCZNE.
+
+CREATE TRIGGER check_number_of_meals_added_today BEFORE INSERT ON spozycie FOR EACH ROW EXECUTE PROCEDURE check_number_of_meals_added_by_user();

@@ -7,6 +7,7 @@ import FormatFunctions from "../../helpers/formatFunctions";
 import auth from "../../helpers/auth";
 import nutritionDataInitial from "../../helpers/nutritionDataInitial";
 import UserActivity from "../../components/UserActivity";
+import MealsDetails from "../../components/MealsDetails";
 
 const Panel = () => {
     let format = new FormatFunctions();
@@ -435,6 +436,8 @@ const Panel = () => {
             </div>
 
             <UserActivity />
+
+            <MealsDetails />
 
         </> : ""}
     </div>

@@ -10,4 +10,39 @@ jest modyfikowana (dodawane jest 30 minut od czasu wykonywania akcji). W celu ut
 usuwające z tabeli SESJE wiersze, w ktorych data_wygasniecia_sesji jest mniejsza od aktualnej daty i godziny. Polecenie delete, usuwające z tabeli aktualną sesję,
 jest również wywoływane przy wylogowaniu się użytkownika.
 
+---------- 2. Dodawanie, modyfikacja i usuwanie wierszy tabeli bazy danych ----------
+Zalogowany użytkownik ma prawo dodawać rekordy do tabel:
 
+a) SPOZYCIE - poprzez wybranie w górnym menu opcji "Dodaj spożycie" i wybraniu odpowiedniego produktu oraz wpisaniu ilości spożytego produktu w gramach. Jeden użytkownik
+ma prawo dodać maksymalnie 10 spożytych produktów w ciągu dnia (kontrolowane jest to za pomocą odpowiedniego triggera).
+b) SPORT, AKTYWNOSCI_FIZYCZNE - poprzez wybranie w górnym menu opcji "Dodaj aktywność", wybranie odpowiedniej dyscypliny oraz długości trwania aktywności fizycznej w minutach. Jeden użytkownik
+ma prawo dodać maksymalnie 5 aktywności fizycznych w ciągu dnia (kontrolowane jest to za pomocą odpowiedniego triggera).
+c) POCZEKALNIA_PRUDKTOW - poprzez wybranie w górnym menu opcji "Dodaj produkt" i uzupełnienia formularza. Produkt trafia do poczekalni, gdzie czeka na zatwierdzenie lub
+odrzucenie przez administratora.
+
+Zalogowany użytkownik ma prawo modyfikować rekordy tabeli:
+
+a) UZYTKOWNICY - zmiana danych na swoim profilu, takich jak imię, nazwisko, wzrost, waga, płeć, login oraz hasło.
+
+Zalogowany użytkownik ma prawo usuwać rekordy tabeli:
+
+a) AKTYWNOSCI_FIZYCZNE - poprzez kliknięcie przycisku "Usuń" obok odpowiedniej aktywności w panelu użytkownika, w sekcji "Twoja aktywność fizyczna"
+b) SPOZYCIE - poprzez kliknięcie przycisku "Usuń" obok odpowiedniego posiłku w panelu użytkownika, w sekcji "Szczegóły Twoich ostatnich posiłków"
+
+Zalogowany administrator ma prawo dodawać rekordy do tabel:
+
+a) PRODUKTY, WARTOSCI_ODZYWCZE, MAKROELEMENTY - dodanie rekordu do tych tabel następuje automatycznie po zatwierdzeniu przez administratora danego produktu z poczekalni produktów.
+
+Zalogowany administrator ma prawo usuwać rekordy z tabeli:
+
+a) POCZEKALNIA_PRODUKTOW - poprzez odrzucenie propozycji produktu w panelu administratora.
+
+Przy każdym logowaniu lub akcji wykonywanej przez zalogowanego użytkownika/administratora, następuje również dodanie/modyfikacja wierszy w tabeli
+sesje/sesje_adminow.
+
+---------- 3. Bezpieczeństwo bazy danych ----------
+Aplikacja jest odporna na ataki SQL Injection poprzez wykorzystanie parameterized queries. Zapytania do bazy zawierające tekst wpisany przez
+użytkownika nie są wysyłane w formie tekstu, lecz rodzielone na część zawierającą zapytanie oraz część zawierającą parametry, co nie dopuszcza do "wstrzyknięcia"
+kodu SQL.
+
+Hasło do bazy danych przechowywane jest tylko po stronie serwera, nie jest dostępne dla użytkownika od strony przeglądarki.
