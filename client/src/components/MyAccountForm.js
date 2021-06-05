@@ -20,16 +20,18 @@ const MyAccountForm = () => {
             setId(res.id);
             setFirstName(res.name);
             setLastName(res.surname);
-            setGender(res.gender);
-            setLogin(res.login);
+            if(res.gender === 'm') setGender("Mężczyzna");
+            else setGender("Kobieta");
+            setLogin(res.login);1
             setHeight(res.height);
             setWeight(res.weight);
-        })
-
+        });
     }, []);
 
     const validationSchema = Yup.object({
-
+        login: Yup.string()
+            .required("Login jest polem wymaganym")
+            .min(3, "Login powinien się składać z co najmniej 3 liter")
     });
 
     const formik = useFormik({
@@ -47,10 +49,7 @@ const MyAccountForm = () => {
             values['id'] = id;
             axios.post("http://localhost:5000/user/edit-user", values)
                 .then(res => {
-
-                })
-                .catch(err => {
-
+                    console.log(res.data);
                 });
         }
     });
@@ -79,8 +78,8 @@ const MyAccountForm = () => {
                         name="gender"
                         onChange={formik.handleChange}
                         value={formik.values.gender}>
-                    <option>Kobieta</option>
-                    <option>Mężczyzna</option>
+                    <option value="Kobieta">Kobieta</option>
+                    <option value="Mężczyzna">Mężczyzna</option>
                 </select>
                 <span>Płeć</span>
             </label>

@@ -41,8 +41,8 @@ Przy każdym logowaniu lub akcji wykonywanej przez zalogowanego użytkownika/adm
 sesje/sesje_adminow.
 
 ---------- 3. Bezpieczeństwo bazy danych ----------
-Aplikacja jest odporna na ataki SQL Injection poprzez wykorzystanie parameterized queries. Zapytania do bazy zawierające tekst wpisany przez
-użytkownika nie są wysyłane w formie tekstu, lecz rodzielone na część zawierającą zapytanie oraz część zawierającą parametry, co nie dopuszcza do "wstrzyknięcia"
-kodu SQL.
+Aplikacja jest odporna na ataki SQL Injection dzięki wykorzystaniu parameterized queries. Zapytania do bazy zawierające tekst wpisany przez
+użytkownika nie są wysyłane w formie konkatenacji tekstu, lecz rodzielone na część zawierającą zapytanie (w aplikacji zawsze zmienna query) oraz część zawierającą parametry
+(w aplikacji zawsze zmienna values), co nie dopuszcza do "wstrzyknięcia" kodu SQL.
 
 Hasło do bazy danych przechowywane jest tylko po stronie serwera, nie jest dostępne dla użytkownika od strony przeglądarki.

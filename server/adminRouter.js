@@ -14,7 +14,9 @@ const pool = new Pool({
 
 /* Metoda usuwajaca produkt z poczekalni */
 const deleteProduct = (id) => {
-    pool.query(`DELETE FROM poczekalnia_produktow WHERE id = ${id}`);
+    const query = "DELETE FROM poczekalnia_produktow WHERE id = $1";
+    const values = [id];
+    pool.query(query, values);
 }
 
 /* Pobieramy wszystkie produkty z poczekalni */
@@ -40,7 +42,9 @@ router.post("/add-product", async (request, response) => {
     let productInserted = false, nutritionInserted = false, macroInserted = false;
 
     /* Pobieramy informacje o produkcie z poczekalni na podstawie id */
-    pool.query(`SELECT * FROM poczekalnia_produktow WHERE id = ${id}`, (err, res) => {
+    const query = "SELECT * FROM poczekalnia_produktow WHERE id = $1";
+    const values = [id];
+    pool.query(query, values, (err, res) => {
         const productData = res.rows[0];
         const kind = productData.rodzaj;
 

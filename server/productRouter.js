@@ -38,25 +38,14 @@ router.get("/get-all-products", (request, response) => {
 
 /* Dodajemy produkt do poczekalni, gdzie czeka na akceptacje przez administratora */
 router.post("/add-product-to-waiting-room", (request, response) => {
-    const values = request.body;
+    const form = request.body;
     let inserted = 0;
+    const query = `INSERT INTO poczekalnia_produktow VALUES(nextval('poczekalnia_produktow_autoincrement'), $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`;
+    const values = [form.name, form.calories, form.carbo, form.fat, form.sugar, form.salt, form.fiber,
+        form.magnesium, form.potassium, form.phosphorus, form.chlorine, form.calcium, form.protein, form.kind
+    ];
 
-    pool.query(`INSERT INTO poczekalnia_produktow VALUES(nextval('poczekalnia_produktow_autoincrement'),
-                '${values.name}',
-                ${values.calories},
-                ${values.carbo},
-                ${values.fat},
-                ${values.sugar},
-                ${values.salt},
-                ${values.fiber},
-                ${values.magnesium},
-                ${values.potassium},
-                ${values.phosphorus},
-                ${values.chlorine},
-                ${values.calcium},
-                ${values.protein},
-                '${values.kind}'                                                          
-    )`, (err, res) => {
+    pool.query(query, values, (err, res) => {
         if(res) inserted = 1;
         response.send({
             inserted
@@ -70,16 +59,21 @@ router.post("/add-meal", async (request, response) => {
     const productName = request.body.productName;
     let productId = 0;
 
+    const query = `SELECT id FROM produkty WHERE nazwa = $1`;
+    const values = [productName];
+
     /* Znajdujemy id produktu wedlug jego nazwy */
-    await pool.query(`SELECT id FROM produkty WHERE nazwa = '${productName}'`, (err, res) => {
+    await pool.query(query, values, (err, res) => {
         if(res) productId = res.rows[0].id;
-        pool.query(`INSERT INTO spozycie VALUES (
+        const query = `INSERT INTO spozycie VALUES (
                                             nextval('spozycie_autoincrement'),
-                                            ${userId},
-                                            ${productId},
+                                            $1,
+                                            $2,
                                             CURRENT_DATE,
-                                            ${amount}
-    )`, (err, res) => {
+                                            $3
+    )`;
+        const values = [userId, productId, amount];
+        pool.query(query, values, (err, res) => {
             if(res) {
                 if(res.rowCount > 0) {
                     response.send({

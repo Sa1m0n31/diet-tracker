@@ -21,8 +21,11 @@ router.post("/register",(request, response) => {
     /* Haszujemy haslo */
     const hash = crypto.createHash('md5').update(form.password).digest('hex');
 
+    const query = `INSERT INTO uzytkownicy VALUES (nextval('uzytkownicyAutoincrement'), NULL, NULL, NULL, NULL, NULL, $1, $2, $3, NOW())`;
+    const values = [form.email, form.login, hash];
+
     /* Wstawienie uzytkownika do bazy */
-    pool.query(`INSERT INTO uzytkownicy VALUES (nextval('uzytkownicyAutoincrement'), NULL, NULL, NULL, NULL, NULL, '${form.email}', '${form.login}', '${hash}', NOW())`, (err, res) => {
+    pool.query(query, values, (err, res) => {
         const addingFail = () => {
             response.send({
                 insert: 0
@@ -55,7 +58,9 @@ router.post("/login", async (request, response) => {
     pool.query(`DELETE FROM sesje WHERE data_wygasniecia_sesji < current_timestamp`);
 
     /* Szukamy uzytkownika o danym loginie w bazie */
-    await pool.query(`SELECT id, haslo FROM uzytkownicy WHERE login = '${form.login}'`, (err, res) => {
+    const query = `SELECT id, haslo FROM uzytkownicy WHERE login = $1`;
+    const values = [form.login];
+    await pool.query(query, values, (err, res) => {
         if(res.rowCount === 1) {
             /* Sprawdzamy czy uzytkownik podal poprawne haslo */
             if(res.rows[0].haslo === crypto.createHash('md5').update(form.password).digest('hex')) {
@@ -66,7 +71,7 @@ router.post("/login", async (request, response) => {
                 /* Zapisujemy klucz w tabeli SESJE */
                 pool.query(`INSERT INTO sesje VALUES (nextval('sesje_autoincrement'),
                                                                     '${sessionId}',
-                                                                    current_timestamp + (20 * interval '1 minute')
+                                                                    current_timestamp + (30 * interval '1 minute')
                 )`, (err, res) => {
                     /* Zwracamy informacje o zalogowaniu i klucz sesji przegladarce */
                     response.send({
@@ -96,7 +101,9 @@ router.post("/admin-login", async (request, response) => {
     const form = request.body;
 
     /* Szukamy uzytkownika o danym loginie w bazie */
-    await pool.query(`SELECT id, haslo FROM admini WHERE login = '${form.login}'`, (err, res) => {
+    const query = `SELECT id, haslo FROM admini WHERE login = $1`;
+    const values = [form.login];
+    await pool.query(query, values, (err, res) => {
         if(res.rowCount === 1) {
             /* Sprawdzamy czy uzytkownik podal poprawne haslo */
             if(res.rows[0].haslo === crypto.createHash('md5').update(form.password).digest('hex')) {
@@ -107,7 +114,7 @@ router.post("/admin-login", async (request, response) => {
                 /* Zapisujemy klucz w tabeli SESJE_ADMINOW */
                 pool.query(`INSERT INTO sesje_adminow VALUES (nextval('sesje_adminow_autoincrement'),
                                                                     '${sessionId}',
-                                                                    current_timestamp + (20 * interval '1 minute')
+                                                                    current_timestamp + (30 * interval '1 minute')
                 )`, (err, res) => {
                     /* Zwracamy informacje o zalogowaniu i klucz sesji przegladarce */
                     response.send({
@@ -133,11 +140,15 @@ router.post("/admin-login", async (request, response) => {
 /* Zadanie wywolywane przy kazdym zadaniu do chronionego zasobu uzytkownika */
 router.post("/auth", (request, response) => {
     const sessionId = request.body.sessionId;
+    const query = `SELECT * FROM sesje WHERE klucz_sesji = $1 AND data_wygasniecia_sesji > current_timestamp`;
+    const values = [sessionId];
 
-    pool.query(`SELECT * FROM sesje WHERE klucz_sesji = '${sessionId}' AND data_wygasniecia_sesji > current_timestamp`, (err, res) => {
+    pool.query(query, values, (err, res) => {
        if(res.rowCount === 1) {
            /* Przedluzamy czas sesji */
-           pool.query(`UPDATE sesje SET data_wygasniecia_sesji = current_timestamp + (20 * interval '1 minute') WHERE klucz_sesji = '${sessionId}'`);
+           const query = `UPDATE sesje SET data_wygasniecia_sesji = current_timestamp + (30 * interval '1 minute') WHERE klucz_sesji = $1`;
+           const values = [sessionId];
+           pool.query(query, values);
 
            /* Zwracamy odpowiedz do przegladarki */
            response.send({
@@ -156,11 +167,15 @@ router.post("/auth", (request, response) => {
 /* Zadanie wywolywane przy kazdym zadaniu do chronionego zasobu administratora */
 router.post("/admin-auth", (request, response) => {
     const sessionId = request.body.sessionId;
+    const query = `SELECT * FROM sesje_adminow WHERE klucz_sesji = $1 AND data_wygasniecia_sesji > current_timestamp`;
+    const values = [sessionId];
 
-    pool.query(`SELECT * FROM sesje_adminow WHERE klucz_sesji = '${sessionId}' AND data_wygasniecia_sesji > current_timestamp`, (err, res) => {
+    pool.query(query, values, (err, res) => {
         if(res.rowCount === 1) {
             /* Przedluzamy czas sesji */
-            pool.query(`UPDATE sesje_adminow SET data_wygasniecia_sesji = current_timestamp + (20 * interval '1 minute') WHERE klucz_sesji = '${sessionId}'`);
+            const query = `UPDATE sesje_adminow SET data_wygasniecia_sesji = current_timestamp + (30 * interval '1 minute') WHERE klucz_sesji = $1`;
+            const values = [sessionId];
+            pool.query(query, values);
 
             /* Zwracamy odpowiedz do przegladarki */
             response.send({
@@ -179,8 +194,10 @@ router.post("/admin-auth", (request, response) => {
 /* Wylogowanie uzytkownika */
 router.post("/logout", (request, response) => {
    const sessionId = request.body.sessionId;
+   const query = `DELETE FROM sesje WHERE klucz_sesji = $1`;
+   const values = [sessionId];
 
-   pool.query(`DELETE FROM sesje WHERE klucz_sesji = '${sessionId}'`, (err, res) => {
+   pool.query(query, values, (err, res) => {
       response.send({
           loggedOut: 1
       }) ;
@@ -190,8 +207,10 @@ router.post("/logout", (request, response) => {
 /* Wylogowanie administratora */
 router.post("/admin-logout", (request, response) => {
     const sessionId = request.body.sessionId;
+    const query = `DELETE FROM sesje_adminow WHERE klucz_sesji = $1`;
+    const values = [sessionId];
 
-    pool.query(`DELETE FROM sesje_adminow WHERE klucz_sesji = '${sessionId}'`, (err, res) => {
+    pool.query(query, values, (err, res) => {
         response.send({
             loggedOut: 1
         }) ;

@@ -35,13 +35,18 @@ router.post("/add-activity", async (request, response) => {
    const sportId = request.body.sport;
    let userId = request.body.id;
 
-    pool.query(`INSERT INTO sport VALUES (nextval('sport_autoincrement'), ${sportId}, ${time}, NOW()::date) RETURNING id`, (err, res) => {
+   const query = "INSERT INTO sport VALUES (nextval('sport_autoincrement'), $1, $2, NOW()::date) RETURNING id";
+   const values = [sportId, time];
+
+    pool.query(query, values, (err, res) => {
         let result = 0;
         let insertedId;
         if(res) {
             if(res.rows[0]) {
                 insertedId = res.rows[0].id;
-                pool.query(`INSERT INTO aktywnosci_fizyczne VALUES (nextval('aktywnosci_fizyczne_autoincrement'), ${userId}, ${insertedId})`, (err, res) => {
+                const query = "INSERT INTO aktywnosci_fizyczne VALUES (nextval('aktywnosci_fizyczne_autoincrement'), $1, $2)";
+                const values = [userId, insertedId];
+                pool.query(query, values, (err, res) => {
                     if(res) {
                         if(res.rowCount === 1) {
                             result = 1;
@@ -76,12 +81,10 @@ router.post("/add-activity", async (request, response) => {
 /* Pobieramy aktywnosci fizyczne danego uzytkownika z ostatnich siedmiu dni */
 router.post("/get-last-week-activities", (request, response) => {
     const id = request.body.id;
+    const query = "SELECT SUM(s.czas_trwania) as suma, s.data FROM sport s JOIN aktywnosci_fizyczne af ON s.id = af.id_sportu WHERE af.id_uzytkownika = $1 AND s.data > NOW()::date - 7 GROUP BY s.data ORDER BY s.data ASC";
+    const values = [id];
 
-    pool.query(`SELECT SUM(s.czas_trwania) as suma, s.data FROM sport s
-JOIN aktywnosci_fizyczne af
-ON s.id = af.id_sportu
-WHERE af.id_uzytkownika = ${id} AND s.data > NOW()::date - 7
-GROUP BY s.data ORDER BY s.data ASC`, (err, res) => {
+    pool.query(query, values, (err, res) => {
        if(res.rows[0]) {
            res.rows.forEach(item => {
               item.data =  moment(item.data).format('YYYY-MM-DD')
@@ -102,12 +105,10 @@ GROUP BY s.data ORDER BY s.data ASC`, (err, res) => {
 router.post("/get-all-activities", (request, response) => {
     const id = request.body.id;
 
-    pool.query(`SELECT af.id as id, s.czas_trwania, s.data, ds.nazwa FROM sport s
-JOIN dyscypliny_sportu ds
-ON s.id_dyscypliny = ds.id
-JOIN aktywnosci_fizyczne af
-ON s.id = af.id_sportu
-WHERE af.id_uzytkownika = ${id} ORDER BY data DESC LIMIT 10`, (err, res) => {
+    const query = "SELECT af.id as id, s.czas_trwania, s.data, ds.nazwa FROM sport s JOIN dyscypliny_sportu ds ON s.id_dyscypliny = ds.id JOIN aktywnosci_fizyczne af ON s.id = af.id_sportu WHERE af.id_uzytkownika = $1 ORDER BY data DESC LIMIT 10";
+    const values = [id];
+
+    pool.query(query, values, (err, res) => {
         if(res.rows[0]) {
             res.rows.forEach(item => {
                 item.data =  moment(item.data).format('YYYY-MM-DD')
@@ -127,8 +128,10 @@ WHERE af.id_uzytkownika = ${id} ORDER BY data DESC LIMIT 10`, (err, res) => {
 /* Usuwanie aktywnosci fizycznej */
 router.post("/delete-activity", (request, response) => {
    const id = request.body.id;
+   const query = "DELETE FROM aktywnosci_fizyczne WHERE id = $1";
+   const values = [id];
 
-   pool.query(`DELETE FROM aktywnosci_fizyczne WHERE id = ${id}`, (err, res) => {
+   pool.query(query, values, (err, res) => {
       let result = 0;
        if(res) result = 1;
        response.send({
