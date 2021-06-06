@@ -9,7 +9,7 @@ const MealsDetails = () => {
     useEffect(() => {
         const id = localStorage.getItem('diet-tracker-userId');
 
-        axios.post("http://localhost:5000/data/get-meals-details", {
+        axios.post("http://diet-tracker.szymonburak.pl/data/get-meals-details", {
             id
         })
             .then(res => {
@@ -20,7 +20,7 @@ const MealsDetails = () => {
     }, [update]);
 
     const deleteMeal = (id) => {
-        axios.post("http://localhost:5000/data/delete-meal", {
+        axios.post("http://diet-tracker.szymonburak.pl/data/delete-meal", {
             id
         })
             .then(res => {

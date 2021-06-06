@@ -30,7 +30,7 @@ const UserActivity = () => {
     useEffect(() => {
         const id = localStorage.getItem('diet-tracker-userId');
 
-        axios.post("http://localhost:5000/activity/get-all-activities", {
+        axios.post("http://diet-tracker.szymonburak.pl/activity/get-all-activities", {
             id
         })
             .then(res => {
@@ -39,7 +39,7 @@ const UserActivity = () => {
                 }
             });
 
-        axios.post("http://localhost:5000/activity/get-last-week-activities", {
+        axios.post("http://diet-tracker.szymonburak.pl/activity/get-last-week-activities", {
             id
         })
             .then(res => {
@@ -80,7 +80,7 @@ const UserActivity = () => {
     ), [update]);
 
     const deleteActivity = (id) => {
-        axios.post("http://localhost:5000/activity/delete-activity", {
+        axios.post("http://diet-tracker.szymonburak.pl/activity/delete-activity", {
             id
         })
             .then(res => {

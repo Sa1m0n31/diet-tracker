@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.process.ProcessModel>
+   <object objectType="InfoStore" objectID="13D4BA46-6901-B313-D9DC-A68D069F66E4" name="Baza produktow" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.process.InfoStore" propertyParentId="DA05E44F-064B-F456-FAAA-761A1095A0BF" propertySourceId="" propertyTargetId=""/>
+   <object objectType="InfoStore" objectID="3B9D5C34-4209-B0FD-D4CF-D0B3F5627880" name="Spozycie" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.process.InfoStore" propertyParentId="DA05E44F-064B-F456-FAAA-761A1095A0BF" propertySourceId="" propertyTargetId=""/>
+   <object objectType="InfoStore" objectID="595E2B64-3E80-3A57-002F-7997D93D8655" name="Baza uzytkownikow" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.process.InfoStore" propertyParentId="DA05E44F-064B-F456-FAAA-761A1095A0BF" propertySourceId="" propertyTargetId=""/>
+   <object objectType="InfoStore" objectID="ABB151D0-2154-9BE3-74DE-41FA760343F8" name="Aktywnosci fizyczne" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.process.InfoStore" propertyParentId="DA05E44F-064B-F456-FAAA-761A1095A0BF" propertySourceId="" propertyTargetId=""/>
+</oracle.dbtools.crest.model.design.process.ProcessModel>

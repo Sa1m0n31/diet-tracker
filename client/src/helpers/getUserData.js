@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getUserData = () => {
     /* Pobieramy dane o uzytkowniku */
-    const promise = axios.get("http://localhost:5000/user/get-user-data", {
+    const promise = axios.get("http://diet-tracker.szymonburak.pl/user/get-user-data", {
         params: {
             login: localStorage.getItem('diet-tracker-login')
         }

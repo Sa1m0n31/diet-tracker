@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1156ED23-EA7F-EE6C-32DD-049C79D92DBA" name="Makroelementy">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:26:15 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="3F6B0D97-6DE4-2DE8-57C9-FE9CAA8FA648">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:26:24 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="wapn" id="71892389-B245-AB52-D7E1-0575EB6C46EC">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:27:41 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="chlor" id="6C9A2171-153A-BDBF-90A2-5A9D5D66FC5C">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:27:50 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="magnez" id="4540F842-7950-68BA-7DF6-BDA197D8FB0C">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:28:02 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fosfor" id="0BA5ED67-8D0F-1653-9130-B252117D5CD5">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:28:11 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="potas" id="5C96ED70-CC3A-236C-8096-371F9A8A8B0B">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:28:21 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id1" id="CA90630C-5810-6DAA-97BF-B0EC05267BA3">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:10:42 UTC</createdTime>
+<generatorID>00013BF9-1F5D-E074-E287-2102A9E9D7B7</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<referedAttribute>9FE75670-B019-C116-6938-EF961B85F681</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="05AE4A80-3B1B-5DC6-5D59-48BE6A95603F" name="Makroelementy PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:27:29 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3F6B0D97-6DE4-2DE8-57C9-FE9CAA8FA648</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

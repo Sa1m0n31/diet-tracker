@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<InfoStore class="oracle.dbtools.crest.model.design.process.InfoStore" name="Baza uzytkownikow" directorySegmentName="seg_0" id="595E2B64-3E80-3A57-002F-7997D93D8655">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:48:10 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<rdbmsSite>Oracle Database 11g</rdbmsSite>
+<selfDescribing>false</selfDescribing>
+<skipRecords>0</skipRecords>
+<type>RDBMS</type>
+</InfoStore>

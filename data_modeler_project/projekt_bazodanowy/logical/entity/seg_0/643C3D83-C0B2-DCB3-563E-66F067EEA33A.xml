@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="643C3D83-C0B2-DCB3-563E-66F067EEA33A" name="Dyscypliny_sportu">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:53:17 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="7E15ED72-F1EA-C9C2-EE10-9B51BBCD5628">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:53:25 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa" id="8CA383C3-FE88-5694-7EC7-7DF36B7780A5">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:53:33 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F1F45570-032D-E17A-4DFB-FB6F6CEF8144" name="Aktywnosci_fizyczne PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:53:32 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7E15ED72-F1EA-C9C2-EE10-9B51BBCD5628</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

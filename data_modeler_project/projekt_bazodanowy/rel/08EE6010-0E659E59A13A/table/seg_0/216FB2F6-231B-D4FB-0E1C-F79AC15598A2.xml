@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="216FB2F6-231B-D4FB-0E1C-F79AC15598A2" name="admini">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>481546A3-2D84-E5A8-CF88-0EF1F015CC4A</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="CA71432E-F1AB-B869-8A91-396B64149883">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>EBE45506-8F3A-88E8-5FE3-82A9A0C30DDA</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="login" id="CCB06E5E-014A-1ABB-31B7-47A07972CCA8">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>F7578B11-B8DD-6C97-98F2-059A9F95FAAB</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="haslo" id="E5B95441-B9F5-CEA3-7202-7B70A2CF9673">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>395E01D4-3E4D-5FFA-FF16-A8BB5A268EEA</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="97704BA6-49C4-A1BA-4CC8-F4BF6D60FDF4" name="admini_PK">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>67CE41C2-66C3-5201-7CE3-BB5C1AE774CA</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA71432E-F1AB-B869-8A91-396B64149883"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

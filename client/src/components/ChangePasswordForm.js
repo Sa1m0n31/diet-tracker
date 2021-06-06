@@ -36,7 +36,7 @@ const ChangePasswordForm = () => {
             console.log(formik.values.newPassword);
             console.log(formik.values.repeatNewPassword);
             if(formik.values.newPassword === formik.values.repeatNewPassword) {
-                axios.post("http://localhost:5000/user/change-password", values)
+                axios.post("http://diet-tracker.szymonburak.pl/user/change-password", values)
                     .then(res => {
                         if(res.data.result === 1) setMsg("Hasło zostało zmienione");
                         else if(res.data.result === 0) setMsg("Podane aktualne hasło nie jest poprawne");

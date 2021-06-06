@@ -24,7 +24,7 @@ const LoginForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            axios.post("http://localhost:5000/login", values)
+            axios.post("http://diet-tracker.szymonburak.pl/login", values)
                 .then(res => {
                     console.log(res);
                     console.log(res.data);

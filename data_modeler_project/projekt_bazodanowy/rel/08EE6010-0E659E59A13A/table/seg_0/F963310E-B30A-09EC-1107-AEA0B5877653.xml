@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F963310E-B30A-09EC-1107-AEA0B5877653" name="Spozycie">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<ordsAlias>relation_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="E4D6D04F-685F-0BFA-0CCD-AC729943D7F1">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:17:25 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_uzytkownika" id="59FF4DB6-DD0E-922F-A6C5-A07270E7B1DD">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="72127DE5-16DE-2573-68EA-CEAA6FF17289" referredColumn="5596A33C-58EF-1128-B22E-3FBA837C3F74"/>
+</associations>
+</Column>
+<Column name="id_produktu" id="294B6656-6217-EFD0-E056-8350CEEA158B">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3299958F-5373-B29E-3A66-B69BB2290455" referredColumn="4A4BD79E-0931-9A4F-8BEF-24A0F8C83E76"/>
+</associations>
+</Column>
+<Column name="data" id="3F35D4DD-9BF6-098C-8294-2522BA3AE04D">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:17:05 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ilosc" id="87B2BBD8-B80C-7300-E82E-D8A007AA943E">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:17:05 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BDE340DB-E42E-B24C-CF8E-3E876825FC19" name="Relation_4_PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59FF4DB6-DD0E-922F-A6C5-A07270E7B1DD"/>
+<colUsage columnID="294B6656-6217-EFD0-E056-8350CEEA158B"/>
+<colUsage columnID="E4D6D04F-685F-0BFA-0CCD-AC729943D7F1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD4321CC-63B1-D53B-C4C4-9AA5D7EF1139" name="Data_spozycia_index">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:29:37 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F35D4DD-9BF6-098C-8294-2522BA3AE04D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E4CD21A5-83C3-9379-3601-CB1E80C23244" name="Relation_4_Uzytkownicy_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>CA1F9ED2-1D0C-4F84-A061-4309A372CCCE</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59FF4DB6-DD0E-922F-A6C5-A07270E7B1DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D6B7558B-4D78-0F0C-010A-4507F285EE17" name="Relation_4_Produkty_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>CA1F9ED2-1D0C-4F84-A061-4309A372CCCE</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="294B6656-6217-EFD0-E056-8350CEEA158B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EB4FDEE1-CBC6-33B1-9CC1-7D8BCED9E8C7" name="Aktywnosci fizyczne">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<ordsAlias>relation_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="4F8ABF00-7967-8A45-3B60-EA165D4F87D1">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:18:52 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_uzytkownika" id="C7DA9BE5-4B96-72A7-1DE7-AD6C03E13098">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4F7834CE-B2E4-2844-B2CE-61FE34063D54" referredColumn="5596A33C-58EF-1128-B22E-3FBA837C3F74"/>
+</associations>
+</Column>
+<Column name="id_sportu" id="B96266F2-A996-4A43-F989-0BE466C65505">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3ACB2AD5-C43F-2E03-EC16-E20975C53F90" referredColumn="3731D370-2C7E-D73A-7ACC-2F07F9B8FEED"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B9D2B6A2-CCB7-DB94-EA1A-6B8CFEFF6355" name="Relation_6_PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C7DA9BE5-4B96-72A7-1DE7-AD6C03E13098"/>
+<colUsage columnID="B96266F2-A996-4A43-F989-0BE466C65505"/>
+<colUsage columnID="4F8ABF00-7967-8A45-3B60-EA165D4F87D1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0F4EA511-52AA-79C1-5715-D6598B6BBA22" name="Relation_6_Uzytkownicy_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>AE956A48-1095-F245-7C93-3560FD69F45F</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C7DA9BE5-4B96-72A7-1DE7-AD6C03E13098"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="54FA429D-0174-34B1-0D38-ED08E6593E7C" name="Relation_6_Sport_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>AE956A48-1095-F245-7C93-3560FD69F45F</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B96266F2-A996-4A43-F989-0BE466C65505"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

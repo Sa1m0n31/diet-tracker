@@ -14,7 +14,7 @@ const TopMenu = ({username, admin}) => {
     const [mobileMenu, setMobileMenu] = useState(false);
 
     const logout = () => {
-        axios.post("http://localhost:5000/logout", {
+        axios.post("http://diet-tracker.szymonburak.pl/logout", {
             sessionId: localStorage.getItem('diet-tracker-sessionId')
         })
             .then(res => {
@@ -27,7 +27,7 @@ const TopMenu = ({username, admin}) => {
     }
 
     const logoutAdmin = () => {
-        axios.post("http://localhost:5000/admin-logout", {
+        axios.post("http://diet-tracker.szymonburak.pl/admin-logout", {
             sessionId: localStorage.getItem('diet-tracker-sessionId')
         })
             .then(res => {

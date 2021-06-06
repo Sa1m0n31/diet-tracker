@@ -32,7 +32,7 @@ const RegisterForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: values => {
-            axios.post("http://localhost:5000/register", values)
+            axios.post("http://diet-tracker.szymonburak.pl/register", values)
                 .then(res => {
                     if(res.data.insert === 1) {
                         localStorage.setItem('registered', 'T');

@@ -39,7 +39,7 @@ const Panel = () => {
             });
 
         /* Pobranie danych o posilkach uzytkownika z ostatniego tygodnia */
-        axios.post("http://localhost:5000/data/get-weekly-stats", {
+        axios.post("http://diet-tracker.szymonburak.pl/data/get-weekly-stats", {
             userId: localStorage.getItem('diet-tracker-userId')
         })
             .then(res => {
@@ -57,7 +57,7 @@ const Panel = () => {
             });
 
         /* Pobranie danych o posilkach uzytkownika z ostatniego miesiaca */
-        axios.post("http://localhost:5000/data/get-monthly-stats", {
+        axios.post("http://diet-tracker.szymonburak.pl/data/get-monthly-stats", {
             userId: localStorage.getItem('diet-tracker-userId')
         })
             .then(res => {

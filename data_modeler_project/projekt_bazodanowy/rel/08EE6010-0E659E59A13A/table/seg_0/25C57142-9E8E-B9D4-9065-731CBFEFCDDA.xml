@@ -1,0 +1,171 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="25C57142-9E8E-B9D4-9065-731CBFEFCDDA" name="Wartosci_odzywcze">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>DF85A7EB-AC20-1179-3252-71E0DC673058</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="86B6E884-5695-8121-9AAF-81BCF679E82C">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>D1F41B82-801A-330B-987F-2A125049D1AC</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Produkty_id" id="72B536F8-30F7-81DF-8F8D-1BF5AE3CEC32">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>F753E1AA-C27B-C2EE-E540-B5B27D34A6C2</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9E79287F-D6DD-AC85-5D0C-6DAD4524F4DB" referredColumn="4A4BD79E-0931-9A4F-8BEF-24A0F8C83E76"/>
+</associations>
+</Column>
+<Column name="kilokalorie" id="3B81A65A-5742-6186-75ED-B699455B4E16">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>0063EF76-D818-F94B-39CA-0B12B91FC1AC</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tluszcze" id="C19BE8E5-B892-A37D-37D7-7F5656950094">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>FF8E654D-A954-EA29-51CE-739A34DDDA05</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="kwasy_tluszczowe_nasycone" id="7FFAF15C-74EF-C822-AFD1-697D2CAD23AF">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>4948C662-B372-6FE7-52FF-272CE0FACBEB</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="weglowodany" id="B9101FB6-DDD0-E888-73DC-3F2CCC1073C0">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>2E7A0927-38EB-0E2B-418B-C236F39F1DBD</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cukry" id="A77547C1-2A45-4134-D821-C6D6A861088D">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>A822EAC8-73C5-9091-C77B-516566B5E8CE</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="bialka" id="0D6CD46E-537A-638B-9908-2D7982CB523B">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>17E272BF-D832-47A5-457B-5C4E8D5A6202</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sole" id="C3F7EE53-E4F3-1022-0CEF-BC02E1258BF2">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>E68DA014-B9FF-BF9B-322D-46EABB5EAC74</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="blonnik" id="FF61090E-E1AC-5D5F-DB92-9CCC12E90D9D">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>C9D44088-FFED-9ED3-838D-1D7F11C6D14D</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DA3F3027-4B4A-AC21-3AA8-E85694CC645D" name="Wartosci_odzywcze_PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>78C0CC19-B078-A651-14F0-BA730BDD51F8</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="86B6E884-5695-8121-9AAF-81BCF679E82C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CA6B0E81-E97D-D6E4-60C0-BED8B7D458FD" name="Wartosci_odzywcze__IDX">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>31AE3C5F-ECC1-1035-4537-F427A82E4E33</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="72B536F8-30F7-81DF-8F8D-1BF5AE3CEC32"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="343F40C8-3A99-6787-BCBB-BEB768385189" name="Wartosci_odzywcze_Produkty_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>31AE3C5F-ECC1-1035-4537-F427A82E4E33</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="72B536F8-30F7-81DF-8F8D-1BF5AE3CEC32"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

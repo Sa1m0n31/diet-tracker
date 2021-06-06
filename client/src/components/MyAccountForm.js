@@ -48,7 +48,7 @@ const MyAccountForm = () => {
         validationSchema: validationSchema,
         onSubmit: values => {
             values['id'] = id;
-            axios.post("http://localhost:5000/user/edit-user", values)
+            axios.post("http://diet-tracker.szymonburak.pl/user/edit-user", values)
                 .then(res => {
                     if(res.data) setMsg("Dane zostały zmienione");
                 });

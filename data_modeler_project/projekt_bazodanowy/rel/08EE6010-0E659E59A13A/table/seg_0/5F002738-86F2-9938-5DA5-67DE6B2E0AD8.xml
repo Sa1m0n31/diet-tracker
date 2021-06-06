@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5F002738-86F2-9938-5DA5-67DE6B2E0AD8" name="sesje_adminow">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>1525360D-EFEB-F76C-B72E-E73D39D3608D</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="8346DF37-085F-5641-C207-F26F4B37B1F5">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>E8050E5B-A438-E580-4636-7A5A0D9D999D</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="klucz_sesji" id="EBB8D370-9F07-7E14-6147-FFDE9E01D137">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>B6DE0806-A60E-2769-A3E9-9AA13B1D8342</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_wygasniecia_sesji" id="424E83DE-639E-7B61-5366-940AADDCDB34">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>CA08D2BB-956F-8154-D12D-32231A2413AF</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BB862E6B-0ADA-9BDA-2F55-BC52056550C3" name="sesje_adminow_PK">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:13:27 UTC</createdTime>
+<generatorID>A98738D3-3D62-5487-1D54-AA7768D16650</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8346DF37-085F-5641-C207-F26F4B37B1F5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

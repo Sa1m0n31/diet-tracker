@@ -1,0 +1,226 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="ADCCF70E-F2D5-C1F7-F9E4-917B6D92F7A7" name="poczekalnia_produktow">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:08:08 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="BEB3D2FF-0DAE-800D-A5EB-8DF219658DE9">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:08:18 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa" id="FD7111F0-0388-0152-4DA5-AE78A82C358F">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:08:24 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="kilokalorie" id="FC83EF32-AC7F-F70D-1D74-90477E04018E">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:09:51 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="weglowodany" id="7349C424-3B11-27BB-D10D-25A1F2EC464C">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:03 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="bialka" id="3C907821-2183-5432-7469-8452CACFBECC">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:10 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cukry" id="CA2B8AB0-BE4D-5739-0358-9E494BA43F68">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:16 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sole" id="618BBE31-07F8-C773-6BC3-DB846604F08D">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:22 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="blonnik" id="BCC44CB6-1CCF-E54F-B804-D39F442FE071">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:28 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tluszcze" id="FB7ACA42-CE0B-E482-75E2-37AA1FFBD785">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:42 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="magnez" id="E31CA28D-1D32-E757-F6CF-426EAF107AC7">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:48 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="potas" id="9FED193D-F80F-2BE9-6AD3-8B54038EF8B6">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:10:58 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="wapn" id="502C18D6-A00A-0B48-5C1E-2CD2AFB20508">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:11:07 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fosfor" id="70DA5BD2-0937-EEC2-E58A-F0A7BD3B1C21">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:11:16 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="chlor" id="D4921836-6742-07F8-71C5-F1D404D77170">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:11:24 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="75326B8B-6C74-B757-E12E-F898B49AE618" name="poczekalnia_produktow PK">
+<createdBy>sajmo</createdBy>
+<createdTime>2021-06-06 00:08:23 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BEB3D2FF-0DAE-800D-A5EB-8DF219658DE9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

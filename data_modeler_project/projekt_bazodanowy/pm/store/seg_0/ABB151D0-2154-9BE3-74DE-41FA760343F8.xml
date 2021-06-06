@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<InfoStore class="oracle.dbtools.crest.model.design.process.InfoStore" name="Aktywnosci fizyczne" directorySegmentName="seg_0" id="ABB151D0-2154-9BE3-74DE-41FA760343F8">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:49:54 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<rdbmsSite>Oracle Database 11g</rdbmsSite>
+<selfDescribing>false</selfDescribing>
+<skipRecords>0</skipRecords>
+<type>RDBMS</type>
+</InfoStore>

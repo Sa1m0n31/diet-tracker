@@ -30,7 +30,7 @@ const AdminLogin = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            axios.post("http://localhost:5000/admin-login", values)
+            axios.post("http://diet-tracker.szymonburak.pl/admin-login", values)
                 .then(res => {
                     if(res.data.success === 1) {
                         localStorage.setItem('diet-tracker-sessionId', res.data.sessionId);

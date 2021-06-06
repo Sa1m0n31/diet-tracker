@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ExternalAgent class="oracle.dbtools.crest.model.design.process.ExternalAgent" name="Uzytkownik zalogowany" directorySegmentName="seg_0" id="0246ABA9-0A5E-7110-F889-896FE10CA999">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:56:13 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<fieldSeparator>,</fieldSeparator>
+<fileType>CSV</fileType>
+<selfDescribing>false</selfDescribing>
+<skipRecords>0</skipRecords>
+<transfertype>Full Refresh</transfertype>
+<type>3</type>
+</ExternalAgent>

@@ -21,14 +21,14 @@ const AdminPanel = () => {
                 }
             });
 
-        axios.get("http://localhost:5000/admin/get-all-products-from-waiting-room")
+        axios.get("http://diet-tracker.szymonburak.pl/admin/get-all-products-from-waiting-room")
             .then(res => {
                 setProducts(res.data.products);
             });
     }, []);
 
     const addProduct = (id) => {
-        axios.post("http://localhost:5000/admin/add-product", {
+        axios.post("http://diet-tracker.szymonburak.pl/admin/add-product", {
             id
         })
             .then(res => {
@@ -44,7 +44,7 @@ const AdminPanel = () => {
     }
 
     const deleteProduct = (id) => {
-        axios.post("http://localhost:5000/admin/delete-product", {
+        axios.post("http://diet-tracker.szymonburak.pl/admin/delete-product", {
             id
         })
             .then(res => {

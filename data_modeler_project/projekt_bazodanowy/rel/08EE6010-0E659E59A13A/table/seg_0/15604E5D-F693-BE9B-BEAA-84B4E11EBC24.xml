@@ -1,0 +1,134 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="15604E5D-F693-BE9B-BEAA-84B4E11EBC24" name="Makroelementy">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>1156ED23-EA7F-EE6C-32DD-049C79D92DBA</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="DF74D02D-C022-4281-6F4C-2D40F21BFA90">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>3F6B0D97-6DE4-2DE8-57C9-FE9CAA8FA648</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Produkty_id" id="DFE54EFF-18ED-6F09-DBE8-95A1283BCA02">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>CA90630C-5810-6DAA-97BF-B0EC05267BA3</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3FA4DCC6-FDBD-C242-1A11-63F02925F1CE" referredColumn="4A4BD79E-0931-9A4F-8BEF-24A0F8C83E76"/>
+</associations>
+</Column>
+<Column name="wapn" id="A2977EE3-7E7B-95E6-AFA6-64C3360FCFF3">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>71892389-B245-AB52-D7E1-0575EB6C46EC</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="chlor" id="841DA279-7B79-F838-81DF-08D66A01F483">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>6C9A2171-153A-BDBF-90A2-5A9D5D66FC5C</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="magnez" id="C030A5CD-8F9F-21CD-9244-A302C471235D">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>4540F842-7950-68BA-7DF6-BDA197D8FB0C</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fosfor" id="E3AE9244-857B-1E0B-F692-5B46F5281045">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>0BA5ED67-8D0F-1653-9130-B252117D5CD5</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="potas" id="5401FD8B-34CA-2C0A-49E9-F47473DC659A">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>5C96ED70-CC3A-236C-8096-371F9A8A8B0B</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6277191F-70B1-F7E5-12C3-05EDA812CEE0" name="Makroelementy_PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>05AE4A80-3B1B-5DC6-5D59-48BE6A95603F</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF74D02D-C022-4281-6F4C-2D40F21BFA90"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BD58774B-4C8E-BDDF-98E8-ADD710BF8BBF" name="Makroelementy__IDX">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>00013BF9-1F5D-E074-E287-2102A9E9D7B7</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="DFE54EFF-18ED-6F09-DBE8-95A1283BCA02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="46445514-A29A-5DEB-9D0C-FA2E05C7839A" name="Makroelementy_Produkty_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>00013BF9-1F5D-E074-E287-2102A9E9D7B7</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DFE54EFF-18ED-6F09-DBE8-95A1283BCA02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

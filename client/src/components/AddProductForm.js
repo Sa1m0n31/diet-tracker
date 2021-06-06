@@ -9,7 +9,7 @@ const AddProductForm = () => {
     let [inserted, setInserted] = useState(0);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/product/get-product-kinds")
+        axios.get("http://diet-tracker.szymonburak.pl/product/get-product-kinds")
             .then(async res => {
                 if(res.data) {
                     await res.data.kinds.forEach(item => {
@@ -76,7 +76,7 @@ const AddProductForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: values => {
-            axios.post("http://localhost:5000/product/add-product-to-waiting-room", values)
+            axios.post("http://diet-tracker.szymonburak.pl/product/add-product-to-waiting-room", values)
                 .then(res => {
                    if(res.data.inserted === 1) {
                        /* Dodano produkt */

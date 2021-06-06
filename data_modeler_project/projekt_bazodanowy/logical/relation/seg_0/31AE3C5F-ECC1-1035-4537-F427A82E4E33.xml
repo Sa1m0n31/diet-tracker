@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_2" directorySegmentName="seg_0" id="31AE3C5F-ECC1-1035-4537-F427A82E4E33">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 21:33:16 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<engineerTo>
+<item key="08EE6010-6276-DEEC-C3C9-0E659E59A13A" value="true"/>
+</engineerTo>
+<sourcePk>78C0CC19-B078-A651-14F0-BA730BDD51F8</sourcePk>
+<targetPk>706FE0FD-723F-5408-4B71-871F5EE35F63</targetPk>
+<dominantRole>F461E876-3EE2-53B3-4A5B-AD444018E278</dominantRole>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>DF85A7EB-AC20-1179-3252-71E0DC673058</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>F461E876-3EE2-53B3-4A5B-AD444018E278</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

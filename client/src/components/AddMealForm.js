@@ -16,7 +16,7 @@ const AddMealForm = () => {
     ]
 
     useEffect(() => {
-        axios.get("http://localhost:5000/product/get-all-products")
+        axios.get("http://diet-tracker.szymonburak.pl/product/get-all-products")
             .then(async (res) => {
                 if(res.data) {
                     await res.data.products.forEach(item => {
@@ -49,7 +49,7 @@ const AddMealForm = () => {
 
     const addMeal = () => {
         if(productAmount > 0 && productAmount < 1001) {
-            axios.post("http://localhost:5000/product/add-meal", {
+            axios.post("http://diet-tracker.szymonburak.pl/product/add-meal", {
                 userId: localStorage.getItem('diet-tracker-userId'),
                 productAmount,
                 productName: stateArray[chosenProductIndex].i0

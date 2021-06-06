@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9E79287F-D6DD-AC85-5D0C-6DAD4524F4DB" containerWithKeyObject="25C57142-9E8E-B9D4-9065-731CBFEFCDDA" localFKIndex="343F40C8-3A99-6787-BCBB-BEB768385189" name="Wartosci_odzywcze_Produkty_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>31AE3C5F-ECC1-1035-4537-F427A82E4E33</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<referredTableLongName>Produkty</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E1F68F7B-C078-10D2-612A-5A6C458EC3AF</referredTableID>
+<keyObject>F4ADD98A-DD8C-7062-01E7-F7EA2171C637</keyObject>
+<referredKeyID>F4ADD98A-DD8C-7062-01E7-F7EA2171C637</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

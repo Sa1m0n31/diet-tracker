@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5342246D-F5C2-F0E6-0C27-2CC6B56E0862" containerWithKeyObject="6F6134DF-7BDB-D080-F956-32687B0CFC02" localFKIndex="CB72E7AA-93DF-68E1-9235-648B2C932B28" name="Sport_Dyscypliny_sportu_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>36D622E8-C542-2879-E143-A0B60A560FD2</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<referredTableLongName>Dyscypliny_sportu</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A73A09CA-8AC0-ADA1-49D6-5B16323AEC68</referredTableID>
+<keyObject>198C824E-8022-F2E4-4E61-8F5D4781923C</keyObject>
+<referredKeyID>198C824E-8022-F2E4-4E61-8F5D4781923C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

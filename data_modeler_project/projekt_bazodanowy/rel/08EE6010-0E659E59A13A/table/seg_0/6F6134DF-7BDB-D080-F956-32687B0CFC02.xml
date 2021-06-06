@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6F6134DF-7BDB-D080-F956-32687B0CFC02" name="Sport">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>1142AD23-5A3B-ADE0-C17F-CDD6C7BDEE14</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="3731D370-2C7E-D73A-7ACC-2F07F9B8FEED">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>2AF39A6B-9350-59F4-4D32-1210832834B2</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Dyscypliny_sportu_id" id="E274051C-9F04-DB39-A835-EF83A5BD815B">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>A45F2522-516A-4391-6811-1B3DACA8E2B0</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5342246D-F5C2-F0E6-0C27-2CC6B56E0862" referredColumn="1AC8E17F-80DA-B7EC-CF80-E0849633A57B"/>
+</associations>
+</Column>
+<Column name="czas_trwania" id="93ED525D-98D2-1420-10F0-439C618D0BF6">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>2B102A65-791C-D95D-B83B-235E48FCEDF2</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data" id="32AA54B7-6EE6-4964-D502-E983196584F2">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>D6933CFC-70C6-7E2B-76C2-E619E07BBBC0</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4BE6A23C-CC79-D4E8-36F4-91EDAEE78016" name="Sport_PK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>1AAB419D-29AC-A3CC-4989-34A254BE63A0</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3731D370-2C7E-D73A-7ACC-2F07F9B8FEED"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BF48BD68-CDBB-0CD0-C7CA-EE9710BEABB7" name="Data_sportu_index">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:32:44 UTC</createdTime>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32AA54B7-6EE6-4964-D502-E983196584F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CB72E7AA-93DF-68E1-9235-648B2C932B28" name="Sport_Dyscypliny_sportu_FK">
+<createdBy>user</createdBy>
+<createdTime>2021-04-14 22:14:36 UTC</createdTime>
+<generatorID>36D622E8-C542-2879-E143-A0B60A560FD2</generatorID>
+<ownerDesignName>projekt_bazodanowy</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E274051C-9F04-DB39-A835-EF83A5BD815B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

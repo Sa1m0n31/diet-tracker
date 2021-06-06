@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ae8a042c.chunk.css",
+    "main.js": "/static/js/main.7df0fb61.chunk.js",
+    "main.js.map": "/static/js/main.7df0fb61.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.03887cff.js",
+    "runtime-main.js.map": "/static/js/runtime-main.03887cff.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.e36650b4.chunk.js": "/static/js/2.e36650b4.chunk.js",
+    "static/js/2.e36650b4.chunk.js.map": "/static/js/2.e36650b4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.ae8a042c.chunk.css.map": "/static/css/main.ae8a042c.chunk.css.map",
+    "static/js/2.e36650b4.chunk.js.LICENSE.txt": "/static/js/2.e36650b4.chunk.js.LICENSE.txt",
+    "static/media/add.6f298cca.png": "/static/media/add.6f298cca.png",
+    "static/media/delete.5cc943d2.png": "/static/media/delete.5cc943d2.png",
+    "static/media/diet-tracker-login.9d5d6e35.png": "/static/media/diet-tracker-login.9d5d6e35.png",
+    "static/media/diet-tracker-main.292381a6.png": "/static/media/diet-tracker-main.292381a6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.03887cff.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.e36650b4.chunk.js",
+    "static/css/main.ae8a042c.chunk.css",
+    "static/js/main.7df0fb61.chunk.js"
+  ]
+}

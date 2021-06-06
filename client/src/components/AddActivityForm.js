@@ -8,7 +8,7 @@ const AddActivityForm = () => {
     let arrayOfSports = [];
 
     useEffect(() => {
-        axios.get("http://localhost:5000/activity/get-all-sports")
+        axios.get("http://diet-tracker.szymonburak.pl/activity/get-all-sports")
             .then(async res => {
                 if(res.data.sports) {
                     await res.data.sports.forEach(item => {
@@ -32,7 +32,7 @@ const AddActivityForm = () => {
         const sport = parseInt(document.querySelector("select").value);
         const time = parseInt(document.querySelector(".input").value);
         console.log(sport);
-        axios.post("http://localhost:5000/activity/add-activity", {
+        axios.post("http://diet-tracker.szymonburak.pl/activity/add-activity", {
             id: parseInt(localStorage.getItem('diet-tracker-userId')),
             time,
             sport
