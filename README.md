@@ -11,6 +11,6 @@ Functionalities:<br/>
 - app calculates daily sport activity and draw weekly chart</br>
 - admin panel with ability to discard or accept newly products added by users</br>
 
-<b>Website:</b> http://diet-tracker.szymonburak.pl
-<b>Stack:</b> NodeJS, Express.js, React
-<b>Database:</b> PostgreSQL, plpgsql
+<b>Website:</b> http://diet-tracker.szymonburak.pl</br>
+<b>Stack:</b> NodeJS, Express.js, React</br>
+<b>Database:</b> PostgreSQL, plpgsql</br>
